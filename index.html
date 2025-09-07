@@ -1,0 +1,3930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Preview Test</title>
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Sales Mastery - Unlocked" />
+    <meta property="og:description" content="A neuroscientific approach to understand buyer decision-making, leveraging cognitive biases, and implementing psychological frameworks." />
+    <meta property="og:url" content="https://7e4eec9c.salesunleashed.pages.dev/" />
+    <meta property="og:image" content="https://imagizer.imageshack.com/v2/1600x1200q70/923/qcbN70.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Sales Mastery - Unlocked" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@yourtwitterhandle" />
+    <meta name="twitter:title" content="Sales Mastery - Complete Integrated Experience" />
+    <meta name="twitter:description" content="A neuroscientific approach to understand buyer decision-making, leveraging cognitive biases, and implementing psychological frameworks." />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1756856893832-e6d28ba0a2b0?fm=jpg&q=60&w=1200&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        /* Landing Page Styles */
+        .cover-container {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 70%);
+            padding: 100px 20px 120px;
+        }
+        
+        .cover-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.02) 49.5%, rgba(255,255,255,0.02) 50.5%, transparent 51%),
+                linear-gradient(-45deg, transparent 49%, rgba(255,255,255,0.01) 49.5%, rgba(255,255,255,0.01) 50.5%, transparent 51%);
+            background-size: 60px 60px;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .cover-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .cover-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .cover-title {
+            font-size: clamp(2rem, 8vw, 5.5rem);
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+            letter-spacing: -2px;
+            line-height: 0.9;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+        }
+        
+        .cover-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .cover-subtitle {
+            font-size: clamp(1rem, 3vw, 2rem);
+            color: #888;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+        }
+        
+        .cover-subtitle.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .cover-description {
+            font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+            color: #ccc;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
+        }
+        
+        .cover-description.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .view-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: rgba(80, 80, 80, 0.4);
+            color: #ccc;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid #555;
+            font-weight: 900;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease 0.7s, transform 0.8s ease 0.7s, background 0.3s ease;
+            font-size: 1.1em;
+            letter-spacing: -0.5px;
+        }
+        
+        .view-button.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .view-button:hover {
+            background: rgba(100, 100, 100, 0.5);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        
+        .stats-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease 0.9s, transform 0.8s ease 0.9s;
+            width: 100%;
+            max-width: 600px;
+            z-index: 2;
+        }
+        
+        .stats-bar.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stat-item {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            text-align: center;
+            min-width: 120px;
+            flex: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .stat-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stat-item:nth-child(1) { transition-delay: 1.0s; }
+        .stat-item:nth-child(2) { transition-delay: 1.1s; }
+        .stat-item:nth-child(3) { transition-delay: 1.2s; }
+        .stat-item:nth-child(4) { transition-delay: 1.3s; }
+        
+        .stat-number {
+            font-size: 1.8em;
+            font-weight: 900;
+            color: #fff;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.8em;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 100;
+            padding: 0 20px;
+        }
+        
+        .nav-button {
+            padding: 12px 20px;
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid #333;
+            font-weight: 900;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.9em;
+            letter-spacing: -0.5px;
+            flex: 1;
+            text-align: center;
+            max-width: 140px;
+        }
+        
+        .nav-button:hover {
+            background: rgba(50, 50, 50, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        .nav-button.active {
+            background: rgba(80, 80, 80, 0.8);
+            box-shadow: 0 4px 20px rgba(100, 100, 100, 0.3);
+        }
+        
+        /* LinkedIn Section - Top Right Corner */
+        .linkedin-section {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 8px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            z-index: 100;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(-20px);
+            max-width: 180px;
+        }
+        
+        .linkedin-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .author-photo {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            object-fit: cover;
+            filter: grayscale(100%);
+            border: 2px solid #555;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+        }
+        
+        .linkedin-section.visible .author-photo {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .author-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+        }
+        
+        .author-name {
+            font-size: 0.85em;
+            font-weight: 700;
+            color: #fff;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease 0.4s, transform 0.5s ease 0.4s;
+        }
+        
+        .linkedin-section.visible .author-name {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .author-title {
+            font-size: 0.7em;
+            color: #888;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease 0.5s, transform 0.5s ease 0.5s;
+        }
+        
+        .linkedin-section.visible .author-title {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .linkedin-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            padding: 3px 6px;
+            background: rgba(80, 80, 80, 0.8);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.65em;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease 0.6s, transform 0.5s ease 0.6s, background 0.3s ease;
+            width: 100%;
+        }
+        
+        .linkedin-section.visible .linkedin-button {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .linkedin-button:hover {
+            background: rgba(100, 100, 100, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        .linkedin-icon {
+            width: 8px;
+            height: 8px;
+            fill: currentColor;
+        }
+        
+        /* Content Page Styles */
+        .content-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            padding: 80px 15px 15px;
+            overflow-y: auto;
+            z-index: 1000;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            display: none;
+        }
+        
+        .content-page.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+        }
+        
+        .content-page.visible .content-container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .content-header {
+            background: linear-gradient(135deg, #000 0%, #222 100%);
+            padding: 40px 30px;
+            text-align: center;
+            border-bottom: 2px solid #333;
+        }
+        
+        .content-header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s;
+        }
+        
+        .content-page.visible .content-header h1 {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .content-subtitle {
+            color: #888;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
+        }
+        
+        .content-page.visible .content-subtitle {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .content-section {
+            padding: 40px 30px;
+            border-bottom: 1px solid #333;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .content-page.visible .content-section {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .content-section h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        .intro-text {
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+        
+        .key-insight {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease 0.8s, transform 0.8s ease 0.8s;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.15), 0 0 40px rgba(255, 255, 255, 0.1);
+        }
+        
+        .content-page.visible .key-insight {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .key-insight p {
+            color: #ccc;
+            line-height: 1.7;
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
+            margin: 0;
+        }
+        
+        .framework-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .framework-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.2s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .content-page.visible .framework-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .framework-card:nth-child(1) { transition: opacity 0.8s ease 0.9s, transform 0.8s ease 0.9s, all 0.2s ease; }
+        .framework-card:nth-child(2) { transition: opacity 0.8s ease 1.0s, transform 0.8s ease 1.0s, all 0.2s ease; }
+        .framework-card:nth-child(3) { transition: opacity 0.8s ease 1.1s, transform 0.8s ease 1.1s, all 0.2s ease; }
+        
+        .framework-card:hover {
+            transform: translateY(-5px);
+            border-color: #555;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+        }
+        
+        .framework-card h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            font-weight: 600;
+        }
+        
+        .framework-card .stat {
+            background: #2a2a2a;
+            color: #888;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-size: 0.85em;
+        }
+        
+        .full-width-card {
+            grid-column: 1 / -1;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.2s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease 1.2s, transform 0.8s ease 1.2s, all 0.2s ease;
+        }
+        
+        .content-page.visible .full-width-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .full-width-card:hover {
+            transform: translateY(-5px);
+            border-color: #555;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+        }
+        
+        .full-width-card h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            font-weight: 600;
+        }
+        
+        .full-width-card p {
+            color: #ccc;
+            line-height: 1.7;
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
+        }
+        
+        .technique-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .technique-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: #ccc;
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .content-page.visible .technique-list li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .technique-list li:nth-child(1) { transition-delay: 1.2s; }
+        .technique-list li:nth-child(2) { transition-delay: 1.3s; }
+        .technique-list li:nth-child(3) { transition-delay: 1.4s; }
+        .technique-list li:nth-child(4) { transition-delay: 1.5s; }
+        .technique-list li:nth-child(5) { transition-delay: 1.6s; }
+        .technique-list li:nth-child(6) { transition-delay: 1.7s; }
+        
+        .technique-list li::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #888;
+            font-size: 0.8em;
+        }
+        
+        .technique-list strong {
+            color: #fff;
+        }
+        
+        .advanced-techniques {
+            padding: 40px 30px;
+            background: #000;
+        }
+        
+        .objection-matrix-card {
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px 0;
+            transition: all 0.2s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .content-page.visible .objection-matrix-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .objection-matrix-card h2 {
+            color: #fff;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        .objection-matrix-card p {
+            color: #ccc;
+            line-height: 1.7;
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
+        }
+        
+        .neuroscience-section {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px 0;
+            transition: all 0.2s ease;
+        }
+        
+        .neuroscience-section:hover {
+            transform: translateY(-5px);
+            border-color: #555;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+        }
+        
+        .neuroscience-section h3 {
+            color: #fff;
+            font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+            margin-bottom: 20px;
+        }
+        
+        .brain-technique {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        
+        .brain-technique h4 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: clamp(1rem, 1.8vw, 1.1rem);
+        }
+        
+        .brain-technique p {
+            color: #ccc;
+            font-size: clamp(0.9rem, 1.3vw, 0.95rem);
+            line-height: 1.5;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .metric-card {
+            background: #111;
+            border: 1px solid #333;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .content-page.visible .metric-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .metric-card:nth-child(1) { transition-delay: 1.8s; }
+        .metric-card:nth-child(2) { transition-delay: 1.9s; }
+        .metric-card:nth-child(3) { transition-delay: 2.0s; }
+        .metric-card:nth-child(4) { transition-delay: 2.1s; }
+        .metric-card:nth-child(5) { transition-delay: 2.2s; }
+        .metric-card:nth-child(6) { transition-delay: 2.3s; }
+        
+        .metric-number {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 900;
+            color: #fff;
+            display: block;
+        }
+        
+        .metric-label {
+            color: #888;
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+            margin-top: 8px;
+        }
+        
+        .strategy-breakdown {
+            background: #000;
+            border: 1px solid #333;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 25px;
+        }
+        
+        .strategy-breakdown h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: clamp(1.1rem, 2vw, 1.2rem);
+        }
+        
+        .strategy-breakdown p {
+            color: #ccc;
+            line-height: 1.7;
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
+        }
+        
+        .close-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            padding: 12px 20px;
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid #333;
+            font-weight: 900;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            z-index: 1001;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s, background 0.3s ease;
+            font-size: 1.1em;
+        }
+        
+        .content-page.visible .close-button {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .close-button:hover {
+            background: rgba(50, 50, 50, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        .close-button.closing {
+            opacity: 0;
+            transform: translateY(-20px) scale(0.9);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        
+        /* 90 Day Plan Specific Styles */
+        .overview-section {
+            padding: 40px 30px;
+            border-bottom: 1px solid #333;
+            background: #111;
+        }
+        
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .overview-card {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .overview-number {
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            font-weight: 900;
+            color: #fff;
+            display: block;
+        }
+        
+        .overview-label {
+            color: #888;
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+            margin-top: 5px;
+        }
+        
+        .phase-section {
+            padding: 40px 30px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .phase-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .phase-number {
+            background: #2a2a2a;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: 900;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .phase-title {
+            color: #fff;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+        }
+        
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        
+        .objective-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.2s ease;
+        }
+        
+        .objective-card:hover {
+            transform: translateY(-3px);
+            border-color: #555;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+        
+        .objective-title {
+            color: #fff;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .target-metric {
+            background: #2a2a2a;
+            color: #888;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .action-list {
+            list-style: none;
+        }
+        
+        .action-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #ccc;
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .action-list li::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #888;
+            font-size: 0.8em;
+        }
+        
+        .kpi-dashboard {
+            background: #000;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .kpi-title {
+            color: #fff;
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .kpi-card {
+            background: #111;
+            border: 1px solid #333;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .kpi-number {
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            font-weight: 900;
+            color: #fff;
+            display: block;
+        }
+        
+        .kpi-label {
+            color: #888;
+            font-size: clamp(0.8rem, 1.2vw, 0.85rem);
+            margin-top: 8px;
+        }
+        
+        .advanced-section {
+            background: #111;
+            padding: 40px 30px;
+        }
+        
+        .advanced-technique {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .advanced-technique h4 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: clamp(1rem, 1.8vw, 1.1rem);
+        }
+        
+        .advanced-technique p {
+            color: #ccc;
+            font-size: clamp(0.9rem, 1.3vw, 0.95rem);
+            line-height: 1.5;
+        }
+        
+        /* 127 Matrix Specific Styles */
+        .stats-section {
+            background: #111;
+            padding: 30px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-card {
+            background: #0a0a0a;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+        
+        .stat-number {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 900;
+            color: #fff;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #888;
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+            margin-top: 5px;
+        }
+        
+        .category-section {
+            padding: 40px 30px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .category-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: #fff;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        
+        .objections-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .objection-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .objection-card:hover {
+            transform: translateX(5px);
+            border-color: #555;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+        
+        .objection-number {
+            position: absolute;
+            top: -8px;
+            right: 15px;
+            background: #2a2a2a;
+            color: #fff;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+        
+        .objection-title {
+            font-size: clamp(1.1rem, 2vw, 1.2rem);
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 10px;
+            padding-right: 40px;
+        }
+        
+        .success-rate {
+            background: #2a2a2a;
+            color: #888;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        
+        .psychology {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 12px;
+            font-size: clamp(0.9rem, 1.3vw, 0.95rem);
+            padding: 10px;
+            background: #0a0a0a;
+            border-radius: 6px;
+        }
+        
+        .response {
+            color: #ccc;
+            padding: 15px;
+            background: #0a0a0a;
+            border-radius: 6px;
+            border-left: 3px solid #444;
+            font-weight: 500;
+            line-height: 1.5;
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+        }
+        
+        .methodology {
+            background: #000;
+            color: #fff;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .methodology h2 {
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            margin-bottom: 20px;
+        }
+        
+        .methodology p {
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
+            line-height: 1.8;
+            max-width: 100%;
+            margin: 0 auto;
+            color: #ccc;
+        }
+        
+        /* Ending Page Styles */
+        .ending-section {
+            background: #000;
+            padding: 60px 40px;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+        
+        .ending-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        
+        .ending-subtitle {
+            color: #888;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            max-width: 100%;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        
+        .value-proposition {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px auto;
+            text-align: center;
+            max-width: 100%;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.15), 0 0 40px rgba(255, 255, 255, 0.1);
+        }
+        
+        .value-proposition p {
+            color: #ccc;
+            line-height: 1.7;
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
+            margin: 0;
+        }
+        
+        .profile-flash-card {
+            background: #111;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 40px 30px;
+            margin: 40px auto;
+            text-align: center;
+            max-width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.2), 0 0 70px rgba(255, 255, 255, 0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .profile-flash-card:hover {
+            transform: translateY(-5px);
+            border-color: #666;
+            box-shadow: 0 15px 50px rgba(255, 255, 255, 0.3), 0 0 90px rgba(255, 255, 255, 0.2);
+        }
+        
+        .profile-photo {
+            width: clamp(150px, 25vw, 180px);
+            height: clamp(150px, 25vw, 180px);
+            border-radius: 20px;
+            object-fit: cover;
+            border: 3px solid #666;
+            margin: 0 auto 20px;
+            display: block;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.25), 0 0 70px rgba(255, 255, 255, 0.15);
+        }
+        
+        .profile-name {
+            font-size: clamp(1.6rem, 3vw, 1.8rem);
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 25px;
+            text-align: center;
+            text-transform: none;
+            letter-spacing: 0.5px;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(10px, 2vw, 12px) clamp(18px, 3vw, 20px);
+            background: linear-gradient(135deg, #222 0%, #000 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: px;
+            border: 0.6px solid #555;
+            font-weight: 900;
+            font-size: clamp(0.6rem, 1vw, 1rem);
+            transition: all 0.3s ease;
+            gap: 0.5px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.15), 0 0 50px rgba(255, 255, 255, 0.1);
+            white-space: nowrap;
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(135deg, #333 0%, #111 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.25), 0 0 60px rgba(255, 255, 255, 0.15);
+        }
+        
+        .linkedin-icon {
+            width: clamp(18px, 3vw, 20px);
+            height: clamp(18px, 3vw, 20px);
+            fill: #fff;
+        }
+        
+        .separator {
+            color: #666;
+            font-weight: 400;
+            margin: 0 8px;
+        }
+        
+        /* Medium screens (tablets) */
+        @media (min-width: 768px) {
+            .cover-container {
+                padding: 80px 40px 140px;
+            }
+            
+            .stats-bar {
+                max-width: 700px;
+            }
+            
+            .stat-item {
+                min-width: 140px;
+            }
+            
+            .stat-number {
+                font-size: 2em;
+            }
+            
+            .stat-label {
+                font-size: 0.85em;
+            }
+            
+            .nav-button {
+                max-width: 160px;
+                font-size: 1em;
+                padding: 14px 22px;
+            }
+            
+            .linkedin-section {
+                max-width: 320px;
+            }
+            
+            .author-photo {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .author-name {
+                font-size: 1.1em;
+            }
+            
+            .author-title {
+                font-size: 0.9em;
+            }
+            
+            .linkedin-button {
+                font-size: 0.85em;
+            }
+            
+            .content-page {
+                padding: 100px 30px 30px;
+            }
+            
+            .content-header {
+                padding: 50px 40px;
+            }
+            
+            .content-section {
+                padding: 50px 40px;
+            }
+            
+            .framework-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .metrics-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .overview-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .objectives-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .kpi-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .objections-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .ending-section {
+                padding: 80px 60px;
+            }
+            
+            .profile-flash-card {
+                max-width: 500px;
+            }
+        }
+        
+        /* Large screens (desktops) */
+        @media (min-width: 1024px) {
+            .cover-container {
+                padding: 0;
+                min-height: 100vh;
+            }
+            
+            .stats-bar {
+                position: absolute;
+                bottom: 40px;
+                left: 40px;
+                flex-direction: column;
+                gap: 20px;
+                margin-top: 0;
+                max-width: none;
+                width: auto;
+            }
+            
+            .stat-item {
+                min-width: 120px;
+                width: auto;
+            }
+            
+            .stat-number {
+                font-size: 1.8em;
+            }
+            
+            .stat-label {
+                font-size: 0.8em;
+            }
+            
+            .navigation {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                left: auto;
+                flex-direction: column;
+                gap: 10px;
+                padding: 0;
+                width: auto;
+            }
+            
+            .nav-button {
+                max-width: none;
+                width: auto;
+                padding: 12px 20px;
+                font-size: 1em;
+            }
+            
+            .linkedin-section {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                flex-direction: row;
+                text-align: left;
+                gap: 15px;
+                max-width: 300px;
+            }
+            
+            .author-info {
+                align-items: flex-start;
+            }
+            
+            .linkedin-button {
+                width: auto;
+            }
+            
+            .content-page {
+                padding: 120px 40px 40px;
+            }
+            
+            .content-container {
+                max-width: 1400px;
+            }
+            
+            .content-header {
+                padding: 60px 50px;
+            }
+            
+            .content-section {
+                padding: 60px 50px;
+            }
+            
+            .framework-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 30px;
+                margin-top: 40px;
+            }
+            
+            .framework-card {
+                padding: 30px;
+            }
+            
+            .framework-card h3 {
+                font-size: 1.3em;
+                margin-bottom: 20px;
+            }
+            
+            .framework-card .stat {
+                padding: 8px 16px;
+                margin-bottom: 20px;
+                font-size: 0.9em;
+            }
+            
+            .full-width-card {
+                padding: 30px;
+                margin-top: 30px;
+            }
+            
+            .full-width-card h3 {
+                font-size: 1.3em;
+                margin-bottom: 20px;
+            }
+            
+            .full-width-card p {
+                font-size: 1.1em;
+                line-height: 1.8;
+            }
+            
+            .technique-list {
+                margin-top: 20px;
+            }
+            
+            .technique-list li {
+                padding: 10px 0;
+                padding-left: 30px;
+                font-size: 1em;
+            }
+            
+            .technique-list li::before {
+                font-size: 0.9em;
+            }
+            
+            .advanced-techniques {
+                padding: 60px 50px;
+            }
+            
+            .objection-matrix-card {
+                padding: 40px;
+                margin: 40px 0;
+            }
+            
+            .objection-matrix-card h2 {
+                font-size: 2.2em;
+                margin-bottom: 25px;
+            }
+            
+            .objection-matrix-card p {
+                font-size: 1.2em;
+                line-height: 1.8;
+            }
+            
+            .neuroscience-section {
+                padding: 40px;
+                margin: 40px 0;
+            }
+            
+            .neuroscience-section h3 {
+                font-size: 1.5em;
+                margin-bottom: 25px;
+            }
+            
+            .brain-technique {
+                padding: 25px;
+                margin-bottom: 20px;
+            }
+            
+            .brain-technique h4 {
+                font-size: 1.2em;
+                margin-bottom: 12px;
+            }
+            
+            .brain-technique p {
+                font-size: 1em;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 25px;
+                margin: 40px 0;
+            }
+            
+            .metric-card {
+                padding: 25px;
+            }
+            
+            .metric-number {
+                font-size: 2.8em;
+            }
+            
+            .metric-label {
+                font-size: 1em;
+                margin-top: 10px;
+            }
+            
+            .strategy-breakdown {
+                padding: 30px;
+                margin-top: 30px;
+            }
+            
+            .strategy-breakdown h3 {
+                font-size: 1.3em;
+                margin-bottom: 20px;
+            }
+            
+            .strategy-breakdown p {
+                font-size: 1.2em;
+                line-height: 1.8;
+            }
+            
+            .close-button {
+                top: 40px;
+                left: 40px;
+                padding: 15px 25px;
+                font-size: 1.2em;
+            }
+            
+            .overview-section {
+                padding: 60px 50px;
+            }
+            
+            .overview-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 25px;
+                margin-top: 30px;
+            }
+            
+            .overview-card {
+                padding: 25px;
+            }
+            
+            .overview-number {
+                font-size: 2.5em;
+            }
+            
+            .overview-label {
+                font-size: 1em;
+                margin-top: 8px;
+            }
+            
+            .phase-section {
+                padding: 60px 50px;
+            }
+            
+            .phase-header {
+                margin-bottom: 40px;
+            }
+            
+            .phase-number {
+                width: 80px;
+                height: 80px;
+                font-size: 2em;
+                margin-right: 30px;
+            }
+            
+            .phase-title {
+                font-size: 2.5em;
+            }
+            
+            .objectives-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 30px;
+            }
+            
+            .objective-card {
+                padding: 30px;
+            }
+            
+            .objective-title {
+                font-size: 1.4em;
+                margin-bottom: 20px;
+            }
+            
+            .target-metric {
+                padding: 8px 16px;
+                margin-bottom: 20px;
+                font-size: 0.9em;
+            }
+            
+            .action-list li {
+                padding: 12px 0;
+                padding-left: 30px;
+                font-size: 1.1em;
+            }
+            
+            .action-list li::before {
+                font-size: 0.9em;
+            }
+            
+            .kpi-dashboard {
+                padding: 60px 50px;
+            }
+            
+            .kpi-title {
+                font-size: 2.5em;
+                margin-bottom: 40px;
+            }
+            
+            .kpi-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 25px;
+            }
+            
+            .kpi-card {
+                padding: 25px;
+            }
+            
+            .kpi-number {
+                font-size: 2.5em;
+            }
+            
+            .kpi-label {
+                font-size: 0.9em;
+                margin-top: 10px;
+            }
+            
+            .advanced-section {
+                padding: 60px 50px;
+            }
+            
+            .advanced-technique {
+                padding: 25px;
+                margin-bottom: 25px;
+            }
+            
+            .advanced-technique h4 {
+                font-size: 1.2em;
+                margin-bottom: 15px;
+            }
+            
+            .advanced-technique p {
+                font-size: 1em;
+            }
+            
+            .stats-section {
+                padding: 40px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 25px;
+                margin-top: 30px;
+            }
+            
+            .stat-card {
+                padding: 25px;
+            }
+            
+            .stat-number {
+                font-size: 3em;
+            }
+            
+            .stat-label {
+                font-size: 1em;
+                margin-top: 8px;
+            }
+            
+            .category-section {
+                padding: 60px 50px;
+            }
+            
+            .category-title {
+                font-size: 2.2em;
+                margin-bottom: 40px;
+            }
+            
+            .objections-grid {
+                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+                gap: 30px;
+            }
+            
+            .objection-card {
+                padding: 30px;
+            }
+            
+            .objection-number {
+                width: 32px;
+                height: 32px;
+                font-size: 1em;
+            }
+            
+            .objection-title {
+                font-size: 1.3em;
+                margin-bottom: 15px;
+                padding-right: 50px;
+            }
+            
+            .success-rate {
+                padding: 8px 16px;
+                margin-bottom: 15px;
+                font-size: 0.9em;
+            }
+            
+            .psychology {
+                margin-bottom: 15px;
+                font-size: 1em;
+                padding: 15px;
+            }
+            
+            .response {
+                padding: 20px;
+                font-size: 1.1em;
+                line-height: 1.6;
+            }
+            
+            .methodology {
+                padding: 60px 50px;
+            }
+            
+            .methodology h2 {
+                font-size: 2.5em;
+                margin-bottom: 30px;
+            }
+            
+            .methodology p {
+                font-size: 1.2em;
+                line-height: 1.9;
+                max-width: 900px;
+            }
+            
+            .ending-section {
+                padding: 100px 80px;
+            }
+            
+            .ending-title {
+                font-size: 3.2em;
+                margin-bottom: 30px;
+            }
+            
+            .ending-subtitle {
+                font-size: 1.5em;
+                max-width: 900px;
+                margin: 0 auto 50px;
+                line-height: 1.7;
+            }
+            
+            .value-proposition {
+                padding: 40px;
+                margin: 40px auto;
+                max-width: 1000px;
+            }
+            
+            .value-proposition p {
+                font-size: 1.2em;
+                line-height: 1.8;
+            }
+            
+            .profile-flash-card {
+                padding: 60px 50px;
+                margin: 60px auto;
+                max-width: 600px;
+            }
+            
+            .profile-photo {
+                width: 220px;
+                height: 220px;
+                margin: 0 auto 30px;
+            }
+            
+            .profile-name {
+                font-size: 2.2em;
+                margin-bottom: 35px;
+            }
+            
+            .cta-button {
+                padding: 20px 35px;
+                font-size: 1.2em;
+            }
+            
+            .linkedin-icon {
+                width: 32px;
+                height: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing-page">
+        <!-- LinkedIn Section - Top Right Corner -->
+        <div class="linkedin-section">
+            <img src="https://images.unsplash.com/photo-1756856893832-e6d28ba0a2b0?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hamza Butt" class="author-photo">
+            <div class="author-info">
+                <span class="author-name">Hamza Butt</span>
+                <span class="author-title">Sales Maestro</span>
+                <a href="https://www.linkedin.com/in/hamza-butt-699629274" class="linkedin-button" target="_blank">
+                    <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37,4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24,1.771 24h20.451C23.2 24 24 23.227,24 22.271V1.729C24 .774 23.2 0,22.222 0h.003z"/>
+                    </svg>
+                    Connect
+                </a>
+            </div>
+        </div>
+
+        <!-- B2B Sales Psychology Cover -->
+        <div id="psychology-cover" class="cover-container">
+            <div class="cover-content">
+                <h1 class="cover-title">THE PSYCHOLOGY OF B2B SALES</h1>
+                <p class="cover-subtitle">How Behavioral Economics Drives 42% Close Rates</p>
+                <p class="cover-description">
+                    A neuroscientific approach to understand buyer decision-making, leveraging cognitive biases, 
+                    and implementing psychological frameworks that transform sales conversations into predictable outcomes.
+                </p>
+                <a href="#" class="view-button" onclick="showContent('psychology-content'); return false;">View</a>
+            </div>
+            
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-number">56,400+</span>
+                    <span class="stat-label">Conversations Analyzed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">42%</span>
+                    <span class="stat-label">Close Rate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">28%</span>
+                    <span class="stat-label">Cycle Reduction</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">127%</span>
+                    <span class="stat-label">Quota Achievement</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 127 Objection Matrix Cover -->
+        <div id="objection-cover" class="cover-container" style="display: none;">
+            <div class="cover-content">
+                <h1 class="cover-title">THE COMPLETE 127-POINT OBJECTION MATRIX</h1>
+                <p class="cover-subtitle">Every B2B Sales Objection Mapped to Psychological Triggers</p>
+                <p class="cover-description">
+                    A comprehensive psychological framework for overcoming sales objections using advanced behavioral economics, 
+                    cognitive bias exploitation, and neurolinguistic programming techniques.
+                </p>
+                <a href="#" class="view-button" onclick="showContent('objection-content'); return false;">View</a>
+            </div>
+            
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-number">127</span>
+                    <span class="stat-label">Objections Documented</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">56,400+</span>
+                    <span class="stat-label">Calls Analyzed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">42%</span>
+                    <span class="stat-label">Conversion Rate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24</span>
+                    <span class="stat-label">Months of Testing</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 90-Day Plan Cover -->
+        <div id="plan-cover" class="cover-container" style="display: none;">
+            <div class="cover-content">
+                <h1 class="cover-title">THE REVENUE TRANSFORMATION BLUEPRINT</h1>
+                <p class="cover-subtitle">90-Day Sales Management Mastery</p>
+                <p class="cover-description">
+                    A systematic management plan for building high-performance sales teams through behavioral science, 
+                    advanced objection handling, and predictive pipeline engineering.
+                </p>
+                <a href="#" class="view-button" onclick="showContent('plan-content'); return false;">View</a>
+            </div>
+            
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-number">42%</span>
+                    <span class="stat-label">Target Close Rate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">127%</span>
+                    <span class="stat-label">Team Quota Goal</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">28%</span>
+                    <span class="stat-label">Cycle Reduction</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">$2M+</span>
+                    <span class="stat-label">Pipeline Impact</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a class="nav-button active" onclick="showCover('psychology-cover', this)">B2B Psychology</a>
+            <a class="nav-button" onclick="showCover('objection-cover', this)">127 Objections</a>
+            <a class="nav-button" onclick="showCover('plan-cover', this)">90-Day Plan</a>
+        </div>
+    </div>
+
+    <!-- B2B Psychology Content Page -->
+ <div id="psychology-content" class="content-page">
+        <button class="close-button" onclick="backToLanding()">← Back</button>
+        
+        <div class="content-container">
+            <div class="content-header">
+                <h1>THE PSYCHOLOGY OF B2B SALES</h1>
+                <div class="content-subtitle">How Behavioral Economics Drives 42% Close Rates</div>
+            </div>
+
+            <div class="content-section">
+                <h2>A Fundamental Truth About B2B Decision Making</h2>
+                <p class="intro-text">
+                    Traditional sales training teaches rapport building and objection handling. That's industrial-era thinking in a neural-science world. 
+                    After analyzing 56,488 recorded B2B conversations using cognitive psychology principles, the data reveals something profound:
+                </p>
+                <div class="key-insight">
+                    B2B buyers make emotional decisions first, then construct logical justifications afterward. 
+                    The sale is won or lost in the limbic system, not the prefrontal cortex.
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>The Triple Helix Framework</h2>
+                <div class="framework-grid">
+                    <div class="framework-card">
+                        <h3>Strand 1: Cognitive Bias Exploitation</h3>
+                        <span class="stat">28% Conversion Increase</span>
+                        <p>Instead of fighting human psychology, we exploit predictable cognitive shortcuts:</p>
+                        <ul class="technique-list">
+                            <li><strong>Anchoring Effect:</strong> Open conversations with highest-value propositions</li>
+                            <li><strong>Loss Aversion:</strong> Frame status quo as loss, not missed opportunity</li>
+                            <li><strong>Availability Heuristic:</strong> Use recent, memorable competitor failures</li>
+                            <li><strong>Confirmation Bias:</strong> Guide prospects to convince themselves</li>
+                            <li><strong>Endowment Effect:</strong> Create ownership through trial experiences</li>
+                            <li><strong>Social Proof Cascades:</strong> Layer multiple validation sources</li>
+                        </ul>
+                    </div>
+
+                    <div class="framework-card">
+                        <h3>Strand 2: Neurolinguistic Precision</h3>
+                        <span class="stat">35% Faster Decisions</span>
+                        <p>Language patterns that bypass conscious resistance mechanisms:</p>
+                        <ul class="technique-list">
+                            <li><strong>Presupposition Embedding:</strong> "When you implement..." not "If you choose..."</li>
+                            <li><strong>Temporal State Shifts:</strong> Move them into post-purchase reality</li>
+                            <li><strong>Sensory Predicates:</strong> Match their information processing style</li>
+                            <li><strong>Embedded Commands:</strong> Hidden directives in natural conversation</li>
+                            <li><strong>Refframing Techniques:</strong> Transform objections into buying criteria</li>
+                            <li><strong>Pattern Interrupts:</strong> Break negative thought sequences</li>
+                        </ul>
+                    </div>
+
+                    <div class="framework-card">
+                        <h3>Strand 3: Psychological State Management</h3>
+                        <span class="stat">51% Objection Prevention</span>
+                        <p>Control the buyer's mental state throughout the entire process:</p>
+                        <ul class="technique-list">
+                            <li><strong>Mirror Neuron Activation:</strong> Synchronized breathing and posture</li>
+                            <li><strong>Emotional State Anchoring:</strong> Associate positive feelings with solution</li>
+                            <li><strong>Attention Direction:</strong> Control focus during key moments</li>
+                            <li><strong>Decision State Induction:</strong> Create optimal mindset for commitment</li>
+                            <li><strong>Rapport Calibration:</strong> Match communication styles precisely</li>
+                            <li><strong>Future Pacing:</strong> Mental rehearsal of successful outcomes</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="full-width-card">
+                        <h3>Neuroscience of B2B Objections</h3>
+                        <p>Research shows that 95% of purchase decisions happen in the subconscious mind within 2.5 seconds, then the conscious mind spends minutes or hours justifying that instant decision. Objections aren't logical barriers—they're emotional defense mechanisms.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="advanced-techniques">
+                <div class="objection-matrix-card">
+                    <h2>The Objection Prevention Matrix</h2>
+                    <p>The highest-performing sales professionals prevent 73% of objections before they occur by managing psychological state throughout the conversation. Prevention is 4x more effective than handling after objections surface.</p>
+                </div>
+
+                <div class="neuroscience-section">
+                    <h3>Kahneman System 1/System 2 Exploitation</h3>
+                    <p style="color: #ccc; margin-bottom: 20px;">Based on Nobel Prize research in behavioral economics, this approach targets automatic vs. deliberate thinking systems:</p>
+                    
+                    <div class="brain-technique">
+                        <h4>System 1 Targeting (Fast, Automatic Thinking)</h4>
+                        <p>Use pattern recognition, familiar frameworks, and cognitive shortcuts to create immediate acceptance. Present solutions as obvious extensions of existing processes.</p>
+                    </div>
+                    
+                    <div class="brain-technique">
+                        <h4>System 2 Bypass (Slow, Deliberate Analysis)</h4>
+                        <p>Minimize analytical resistance by providing pre-validated logic trails. Give them the rational justification they need without triggering deep analysis.</p>
+                    </div>
+                </div>
+
+                <div class="neuroscience-section">
+                    <h3>Thaler Nudge Architecture</h3>
+                    <p style="color: #ccc; margin-bottom: 20px;">Behavioral design principles that guide decisions without restricting choice:</p>
+                    
+                    <div class="brain-technique">
+                        <h4>Choice Architecture Design</h4>
+                        <p>Structure options so your preferred solution appears as the path of least resistance. Use strategic option ordering and default bias exploitation.</p>
+                    </div>
+                    
+                    <div class="brain-technique">
+                        <h4>Implementation Intention Programming</h4>
+                        <p>Get prospects to mentally rehearse using your solution through detailed implementation visualization and future state anchoring.</p>
+                    </div>
+                </div>
+
+                <div class="neuroscience-section">
+                    <h3>Cialdini Influence Stack</h3>
+                    <p style="color: #ccc; margin-bottom: 20px;">All six principles of influence deployed systematically throughout the sales process:</p>
+                    
+                    <div class="brain-technique">
+                        <h4>Reciprocity + Authority Combination</h4>
+                        <p>Provide valuable insights before pitching, demonstrated through specific industry expertise and competitor intelligence.</p>
+                    </div>
+                    
+                    <div class="brain-technique">
+                        <h4>Social Proof + Scarcity Layering</h4>
+                        <p>Use competitor adoption rates combined with limited implementation capacity to create urgency without pressure.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>The Measurable Impact</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-number">42%</span>
+                        <span class="metric-label">Personal Close Rate</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number">$7M</span>
+                        <span class="metric-label">Pipeline Generated</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number">127%</span>
+                        <span class="metric-label">Team Quota Achievement</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number">28%</span>
+                        <span class="metric-label">Sales Cycle Reduction</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number">56,400+</span>
+                        <span class="metric-label">Conversations Analyzed</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number">89%</span>
+                        <span class="metric-label">Framework Adoption Rate</span>
+                    </div>
+                </div>
+                
+                <div class="strategy-breakdown">
+                    <h3>Scientific Validation</h3>
+                    <p>These aren't anecdotal wins—they represent systematic outcomes from treating human psychology as an algorithm. Every conversation is documented, every trigger tracked, every response A/B tested. The methodology transforms sales from art into predictable science by leveraging how the human brain actually processes decisions in complex B2B environments.</p>
+                </div>
+            </div>
+
+            <div style="background: #000; padding: 40px; text-align: center;">
+                <h2 style="color: #fff; margin-bottom: 20px;">Systematic Advantage</h2>
+                <p style="color: #888; font-size: 1.1em; line-height: 1.8; max-width: 800px; margin: 0 auto;">
+                    This isn't motivational theory—it's behavioral engineering. When we understand the neurological pathways that drive B2B decision-making, sales becomes a predictable process rather than an unpredictable art. The question isn't whether psychology works in sales. 
+                    The question is are we ready to use it systematically.
+                </p>
+            </div>
+
+            <!-- Ending Page Content Integration -->
+            <div class="ending-section">
+                <h1 class="ending-title">Are You Ready For This Level of Performance?</h1>
+                <div class="ending-subtitle">I'm not your ordinary sales manager. I'm your growth partner—A specialist in transforming underperforming sales operations into revenue-generating powerhouses through psychological mastery and strategic leadership.</div>
+
+                <div class="key-insight">
+                    <p>I'm looking for a revenue problem to solve. Give me your broken sales floor, your impossible market, your ambitious growth target. I'll give you a machine that prints money.</p>
+                </div>
+                
+                <div class="value-proposition">
+                    <p>Seeking to bring this unique trifecta of skills to forward-thinking organizations on the global stage. Particularly valuable for companies looking to build or scale high-performance outbound sales operations.</p>
+                </div>
+
+                <h2 style="color: #fff; margin-bottom: 30px;">If your goal is to transform your sales floor from a cost center into your most powerful profit engine, then I am your candidate.</h2>
+                
+                <div class="profile-flash-card">
+                    <img src="https://images.unsplash.com/photo-1756856893832-e6d28ba0a2b0?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Profile Photo" class="profile-photo">
+                    <h1 class="profile-name">Hamza Butt</h1>
+                    
+                    <a href="https://www.linkedin.com/in/hamza-butt-699629274" class="cta-button" target="_blank">
+                        <svg class="linkedin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37,4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24,1.771 24h20.451C23.2 24 24 23.227,24 22.271V1.729C24 .774 23.2 0,22.222 0h.003z"/>
+                        </svg>
+                        <span class="separator">|</span>
+                        LET'S BUILD SOMETHING LEGENDARY
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 127 Objection Matrix Content Page -->
+    <div id="objection-content" class="content-page">
+        <button class="close-button" onclick="backToLanding()">← Back</button>
+        
+        <div class="content-container">
+            <div class="content-header">
+                <h1>THE COMPLETE 127-POINT OBJECTION MATRIX</h1>
+                <div class="content-subtitle">Every B2B Sales Objection Mapped to Psychological Triggers</div>
+            </div>
+
+            <div class="stats-section">
+                <h2 style="color: #fff; text-align: center; margin-bottom: 10px;">Performance Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">127</span>
+                        <span class="stat-label">Objections Documented</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">56,400+</span>
+                        <span class="stat-label">Calls Analyzed</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">42%</span>
+                        <span class="stat-label">Average Conversion Rate</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">24</span>
+                        <span class="stat-label">Months of A/B Testing</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">9</span>
+                        <span class="stat-label">Objection Categories</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">$7M</span>
+                        <span class="stat-label">Pipeline Generated</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <h2 class="category-title">Budget & Pricing</h2>
+                <div class="objections-grid">
+                    <div class="objection-card">
+                        <div class="objection-number">1</div>
+                        <div class="objection-title">"We don't have budget"</div>
+                        <div class="success-rate">42% Success Rate</div>
+                        <div class="psychology"> Budget is rarely about money—it's about value perception and priority ranking</div>
+                        <div class="response">"I understand. What would need to happen for budget to become available if I could demonstrate a guaranteed 300% ROI in 90 days?"</div>
+                    </div>
+                    
+                    <div class="objection-card">
+                        <div class="objection-number">2</div>
+                        <div class="objection-title">"Your price is too high"</div>
+                        <div class="success-rate">35% Success Rate</div>
+                        <div class="psychology"> Price anchoring failure—they don't see value relative to cost</div>
+                        <div class="response">"High compared to what? Let me show you what happens if you don't solve this problem in the next 6 months..."</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">3</div>
+                        <div class="objection-title">"We need to see a detailed cost breakdown"</div>
+                        <div class="success-rate">67% Success Rate</div>
+                        <div class="psychology"> Control mechanism—they want to feel in charge of the decision</div>
+                        <div class="response">"Absolutely. Before I break down the investment, help me understand what specific outcomes you're measuring success against?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">4</div>
+                        <div class="objection-title">"We spent our budget on something else"</div>
+                        <div class="success-rate">29% Success Rate</div>
+                        <div class="psychology"> Regret and loss aversion—they're protecting a previous decision</div>
+                        <div class="response">"That makes sense. What did you invest in, and how is it performing against your revenue goals?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">5</div>
+                        <div class="objection-title">"We need board approval for this investment"</div>
+                        <div class="success-rate">51% Success Rate</div>
+                        <div class="psychology"> Authority deflection—pushing decision responsibility upward</div>
+                        <div class="response">"Perfect. What metrics does your board care about most when evaluating revenue investments? Let's build that business case together."</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">6</div>
+                        <div class="objection-title">"The CFO will never approve this"</div>
+                        <div class="success-rate">33% Success Rate</div>
+                        <div class="psychology"> Learned helplessness—they've been shut down before</div>
+                        <div class="response">"I understand CFOs think differently about investments. What language does your CFO respond to—cost savings, revenue growth, or risk mitigation?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">7</div>
+                        <div class="objection-title">"We're bootstrapped and cash-conscious"</div>
+                        <div class="success-rate">44% Success Rate</div>
+                        <div class="psychology"> Scarcity mindset—every dollar feels precious</div>
+                        <div class="response">"That's exactly why this matters more for you than large companies. You can't afford to waste a single sales opportunity. Let me show you the cost of inaction..."</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">8</div>
+                        <div class="objection-title">"We need to wait until next quarter"</div>
+                        <div class="success-rate">38% Success Rate</div>
+                        <div class="psychology"> Temporal discounting—future benefits feel less valuable</div>
+                        <div class="response">"I get it. What's the cost of waiting another 90 days while your team operates at current performance levels?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">9</div>
+                        <div class="objection-title">"Can you match competitor's pricing?"</div>
+                        <div class="success-rate">41% Success Rate</div>
+                        <div class="psychology"> Fairness heuristic—they want to feel they're getting a good deal</div>
+                        <div class="response">"I could, but then I'd have to deliver the same results they deliver. Are you happy with their typical outcomes?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">10</div>
+                        <div class="objection-title">"We need to justify ROI to the team"</div>
+                        <div class="success-rate">56% Success Rate</div>
+                        <div class="psychology"> Social proof seeking—they need ammunition for internal selling</div>
+                        <div class="response">"Smart approach. What metrics would make your team say 'this was obviously the right decision' in 6 months?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">11</div>
+                        <div class="objection-title">"The budget got frozen"</div>
+                        <div class="success-rate">23% Success Rate</div>
+                        <div class="psychology"> External locus of control—they feel powerless</div>
+                        <div class="response">"Understandable. When budgets get frozen, it's usually because leadership wants clearer ROI projections. What if we could demonstrate immediate impact?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">12</div>
+                        <div class="objection-title">"We're looking at cheaper alternatives"</div>
+                        <div class="success-rate">47% Success Rate</div>
+                        <div class="psychology"> Risk aversion disguised as cost consciousness</div>
+                        <div class="response">"Makes sense to evaluate options. What's the most expensive outcome—spending too much or getting poor results?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">13</div>
+                        <div class="objection-title">"We need to see immediate cost savings"</div>
+                        <div class="success-rate">52% Success Rate</div>
+                        <div class="psychology"> Present bias—immediate costs feel more real than future benefits</div>
+                        <div class="response">"I understand the urgency. Here are three ways we reduce costs in the first 30 days while building toward larger returns..."</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">14</div>
+                        <div class="objection-title">"The pricing doesn't fit our budget model"</div>
+                        <div class="success-rate">34% Success Rate</div>
+                        <div class="psychology"> Mental accounting—they have rigid categories for spending</div>
+                        <div class="response">"Help me understand your model. Is this being categorized as a cost center or revenue investment?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">15</div>
+                        <div class="objection-title">"We're waiting for more budget in the new year"</div>
+                        <div class="success-rate">31% Success Rate</div>
+                        <div class="psychology"> Temporal landmarks—new year feels like a fresh start</div>
+                        <div class="response">"That's 4-6 months away. What's the opportunity cost of your current sales performance during that time?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">16</div>
+                        <div class="objection-title">"We need to see guaranteed results before paying"</div>
+                        <div class="success-rate">28% Success Rate</div>
+                        <div class="psychology"> Loss aversion extreme—they want certainty in uncertainty</div>
+                        <div class="response">"I appreciate wanting certainty. What specific results would you need to see in 30 days to feel confident about the investment?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">17</div>
+                        <div class="objection-title">"Our procurement process requires multiple bids"</div>
+                        <div class="success-rate">49% Success Rate</div>
+                        <div class="psychology"> Process adherence—they're following rules to avoid blame</div>
+                        <div class="response">"Absolutely. Smart procurement. While you're gathering bids, what criteria will you use to evaluate which approach delivers the best outcomes?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">18</div>
+                        <div class="objection-title">"We can build this internally for less"</div>
+                        <div class="success-rate">36% Success Rate</div>
+                        <div class="psychology"> DIY bias—overestimating internal capabilities</div>
+                        <div class="response">"That's possible. What's your timeline for building, testing, and optimizing an internal solution? And what's the opportunity cost during development?"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <h2 class="category-title">Authority & Decision-Making</h2>
+                <div class="objections-grid">
+                    <div class="objection-card">
+                        <div class="objection-number">19</div>
+                        <div class="objection-title">"I need to discuss with my boss"</div>
+                        <div class="success-rate">45% Success Rate</div>
+                        <div class="psychology"> Authority deflection—protecting themselves from decision risk</div>
+                        <div class="response">"Of course. What specific concerns do you think your boss will have, and how can we address those upfront?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">20</div>
+                        <div class="objection-title">"I'm not the decision maker"</div>
+                        <div class="success-rate">62% Success Rate</div>
+                        <div class="psychology"> Responsibility avoidance—deflecting ownership of outcomes</div>
+                        <div class="response">"I understand. But you're obviously an important influencer. What would the decision maker need to see to feel confident about this?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">21</div>
+                        <div class="objection-title">"The committee needs to review this"</div>
+                        <div class="success-rate">33% Success Rate</div>
+                        <div class="psychology"> Diffusion of responsibility—spreading decision risk across multiple people</div>
+                        <div class="response">"Smart to get committee input. Who on the committee typically raises concerns about investments like this?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">22</div>
+                        <div class="objection-title">"My manager has to sign off"</div>
+                        <div class="success-rate">41% Success Rate</div>
+                        <div class="psychology"> Hierarchical deference—respecting organizational structure</div>
+                        <div class="response">"Absolutely. What does your manager typically want to see when evaluating solutions like this?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">23</div>
+                        <div class="objection-title">"I don't have authority for this size investment"</div>
+                        <div class="success-rate">38% Success Rate</div>
+                        <div class="psychology"> Scope acknowledgment—admitting limits while showing engagement</div>
+                        <div class="response">"I respect that. Help me understand your approval process so we can present this properly to the right stakeholders."</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">24</div>
+                        <div class="objection-title">"The CEO needs to approve all vendor decisions"</div>
+                        <div class="success-rate">47% Success Rate</div>
+                        <div class="psychology"> Top-down control—centralized decision making</div>
+                        <div class="response">"That's smart governance. What metrics does your CEO focus on when evaluating vendor investments?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">25</div>
+                        <div class="objection-title">"I need buy-in from other departments"</div>
+                        <div class="success-rate">44% Success Rate</div>
+                        <div class="psychology"> Stakeholder management—ensuring organizational alignment</div>
+                        <div class="response">"That's thorough planning. Which departments typically have concerns about sales process changes?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">26</div>
+                        <div class="objection-title">"We need legal to review the contract"</div>
+                        <div class="success-rate">71% Success Rate</div>
+                        <div class="psychology"> Risk mitigation—following proper procedures</div>
+                        <div class="response">"Absolutely. Smart approach. What areas do your legal team typically focus on with technology vendors?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">27</div>
+                        <div class="objection-title">"I'm just gathering information for my team"</div>
+                        <div class="success-rate">29% Success Rate</div>
+                        <div class="psychology"> Information broker—positioning themselves as research resource</div>
+                        <div class="response">"Perfect. What specific questions is your team hoping to get answered?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">28</div>
+                        <div class="objection-title">"The board of directors must approve this"</div>
+                        <div class="success-rate">52% Success Rate</div>
+                        <div class="psychology"> Ultimate authority—highest level approval needed</div>
+                        <div class="response">"That's significant strategic thinking. What does your board typically want to see when evaluating revenue investments?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">29</div>
+                        <div class="objection-title">"I need to get consensus from the team"</div>
+                        <div class="success-rate">36% Success Rate</div>
+                        <div class="psychology"> Democratic decision making—ensuring team buy-in</div>
+                        <div class="response">"That's good leadership. What concerns do you anticipate from team members about changing current processes?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">30</div>
+                        <div class="objection-title">"My boss said no to similar solutions before"</div>
+                        <div class="success-rate">31% Success Rate</div>
+                        <div class="psychology"> Historical precedent—past decisions influencing current ones</div>
+                        <div class="response">"That's valuable context. What specifically caused those previous solutions to be rejected?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">31</div>
+                        <div class="objection-title">"We have a purchasing committee process"</div>
+                        <div class="success-rate">58% Success Rate</div>
+                        <div class="psychology"> Process adherence—following established procedures</div>
+                        <div class="response">"Excellent governance. Walk me through your committee's evaluation criteria so I can prepare accordingly."</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">32</div>
+                        <div class="objection-title">"I'm not comfortable making this decision alone"</div>
+                        <div class="success-rate">43% Success Rate</div>
+                        <div class="psychology"> Decision anxiety—fear of making wrong choice alone</div>
+                        <div class="response">"That shows good judgment for an important decision. Who would you want involved in this evaluation?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">33</div>
+                        <div class="objection-title">"I need approval from IT for any new systems"</div>
+                        <div class="success-rate">66% Success Rate</div>
+                        <div class="psychology"> Technical validation—ensuring system compatibility</div>
+                        <div class="response">"Smart integration planning. What technical requirements does your IT team typically evaluate for new solutions?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">34</div>
+                        <div class="objection-title">"We need three quotes before deciding"</div>
+                        <div class="success-rate">48% Success Rate</div>
+                        <div class="psychology"> Due diligence—following comparison shopping protocols</div>
+                        <div class="response">"That's thorough procurement. Beyond price, what other factors will you use to evaluate the quotes?"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <h2 class="category-title">Need & Urgency</h2>
+                <div class="objections-grid">
+                    <div class="objection-card">
+                        <div class="objection-number">35</div>
+                        <div class="objection-title">"We don't have this problem"</div>
+                        <div class="success-rate">27% Success Rate</div>
+                        <div class="psychology"> Denial or genuine lack of awareness about pain points</div>
+                        <div class="response">"That's interesting. Help me understand—when you look at your current conversion rates, what percentage of qualified leads actually close?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">36</div>
+                        <div class="objection-title">"We're hitting our numbers just fine"</div>
+                        <div class="success-rate">32% Success Rate</div>
+                        <div class="psychology"> Complacency or satisfaction with status quo</div>
+                        <div class="response">"That's great to hear. Just curious—what would 'exceptional' numbers look like compared to 'just fine'?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">37</div>
+                        <div class="objection-title">"This isn't a priority right now"</div>
+                        <div class="success-rate">41% Success Rate</div>
+                        <div class="psychology"> Priority ranking—other initiatives feel more urgent</div>
+                        <div class="response">"I understand you have competing priorities. What would make sales performance a higher priority?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">38</div>
+                        <div class="objection-title">"We're too busy to implement something new"</div>
+                        <div class="success-rate">44% Success Rate</div>
+                        <div class="psychology"> Resource scarcity—feeling overwhelmed with current workload</div>
+                        <div class="response">"That's exactly why efficiency matters. What if this actually reduced your team's workload while improving results?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">39</div>
+                        <div class="objection-title">"Our sales process is working fine"</div>
+                        <div class="success-rate">35% Success Rate</div>
+                        <div class="psychology"> Process satisfaction—comfort with familiar systems</div>
+                        <div class="response">"That's good foundation to build on. What does 'working fine' mean in terms of quota achievement and growth targets?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">40</div>
+                        <div class="objection-title">"We don't see the urgency"</div>
+                        <div class="success-rate">29% Success Rate</div>
+                        <div class="psychology"> Temporal discounting—future problems feel less immediate</div>
+                        <div class="response">"I get that. Help me understand—if your competitors implement this type of solution first, how would that impact your market position?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">41</div>
+                        <div class="objection-title">"We just hired new sales reps, no time for new systems"</div>
+                        <div class="success-rate">38% Success Rate</div>
+                        <div class="psychology"> Change fatigue—already managing one transition</div>
+                        <div class="response">"Perfect timing actually. What if we could reduce their ramp time from 6 months to 3 months with the right framework?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">42</div>
+                        <div class="objection-title">"Our team doesn't need training"</div>
+                        <div class="success-rate">26% Success Rate</div>
+                        <div class="psychology"> Competence assumption—overestimating current skill levels</div>
+                        <div class="response">"They sound like a strong team. What's the performance difference between your top performer and average performer?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">43</div>
+                        <div class="objection-title">"We're restructuring and can't add complexity"</div>
+                        <div class="success-rate">31% Success Rate</div>
+                        <div class="psychology"> Complexity avoidance during organizational change</div>
+                        <div class="response">"Restructuring is the perfect time to implement best practices. What if this actually simplified your new structure?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">44</div>
+                        <div class="objection-title">"We need to focus on other initiatives first"</div>
+                        <div class="success-rate">36% Success Rate</div>
+                        <div class="psychology"> Sequential thinking—one project at a time mentality</div>
+                        <div class="response">"That's smart prioritization. How do those initiatives impact your revenue goals, and what happens if sales performance lags behind?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">45</div>
+                        <div class="objection-title">"We're waiting to see what happens with the market"</div>
+                        <div class="success-rate">33% Success Rate</div>
+                        <div class="psychology"> Market uncertainty causing decision paralysis</div>
+                        <div class="response">"Market uncertainty is exactly when sales efficiency matters most. Which position is stronger—optimized or status quo operations?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">46</div>
+                        <div class="objection-title">"We need to prove ROI on existing investments first"</div>
+                        <div class="success-rate">42% Success Rate</div>
+                        <div class="psychology"> Investment sequencing—wanting to validate before expanding</div>
+                        <div class="response">"That's good financial discipline. What if this actually helped you prove ROI on existing investments faster?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">47</div>
+                        <div class="objection-title">"Our customers aren't asking for this"</div>
+                        <div class="success-rate">28% Success Rate</div>
+                        <div class="psychology"> Customer-driven thinking—waiting for external validation</div>
+                        <div class="response">"Customers rarely ask for internal sales improvements—they just buy from whoever sells best. How are you measuring against competitors?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">48</div>
+                        <div class="objection-title">"We're in survival mode, not growth mode"</div>
+                        <div class="success-rate">39% Success Rate</div>
+                        <div class="psychology"> Scarcity mindset—focusing on cutting costs over generating revenue</div>
+                        <div class="response">"Survival mode is when sales efficiency becomes critical. What's the faster path to stability—cutting costs or increasing revenue?"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <h2 class="category-title">Timing & Urgency</h2>
+                <div class="objections-grid">
+                    <div class="objection-card">
+                        <div class="objection-number">49</div>
+                        <div class="objection-title">"We need to think about it"</div>
+                        <div class="success-rate">38% Success Rate</div>
+                        <div class="psychology"> Analysis paralysis triggered by fear of wrong decision</div>
+                        <div class="response">"Absolutely. What specifically about the implementation concerns you most? Let's address that right now."</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">50</div>
+                        <div class="objection-title">"The timing isn't right"</div>
+                        <div class="success-rate">34% Success Rate</div>
+                        <div class="psychology"> Temporal displacement—pushing decision to undefined future</div>
+                        <div class="response">"I understand timing matters. Help me understand—what would make the timing right?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">51</div>
+                        <div class="objection-title">"We want to wait until next quarter"</div>
+                        <div class="success-rate">41% Success Rate</div>
+                        <div class="psychology"> Temporal landmarks—quarters feel like natural starting points</div>
+                        <div class="response">"That's 90 days away. What's the revenue impact of operating at current efficiency for another quarter?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">52</div>
+                        <div class="objection-title">"We're too busy during our peak season"</div>
+                        <div class="success-rate">45% Success Rate</div>
+                        <div class="psychology"> Resource allocation—protecting busy periods from change</div>
+                        <div class="response">"Peak season is when optimization matters most. What if this actually made your peak season 30% more profitable?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">53</div>
+                        <div class="objection-title">"We want to see how Q4 goes first"</div>
+                        <div class="success-rate">37% Success Rate</div>
+                        <div class="psychology"> Sequential decision making—one milestone at a time</div>
+                        <div class="response">"That's smart measurement. What would great Q4 results look like, and how does that compare to what's possible with optimization?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">54</div>
+                        <div class="objection-title">"We need to finish our current projects first"</div>
+                        <div class="success-rate">43% Success Rate</div>
+                        <div class="psychology"> Completion bias—wanting to finish before starting new initiatives</div>
+                        <div class="response">"That's good project management. What if this actually accelerated the success of your current projects?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">55</div>
+                        <div class="objection-title">"It's the wrong time of year for changes"</div>
+                        <div class="success-rate">32% Success Rate</div>
+                        <div class="psychology"> Seasonal thinking—associating changes with specific times</div>
+                        <div class="response">"When is the right time of year? And what's the cost of waiting for that perfect timing?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">56</div>
+                        <div class="objection-title">"We're planning this for next year"</div>
+                        <div class="success-rate">29% Success Rate</div>
+                        <div class="psychology"> Future planning—deferring to distant future</div>
+                        <div class="response">"Good forward thinking. What happens to your competitive position if you wait 12 months while competitors optimize now?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">57</div>
+                        <div class="objection-title">"We want to wait and see what develops"</div>
+                        <div class="success-rate">26% Success Rate</div>
+                        <div class="psychology"> Option value—keeping decisions open for more information</div>
+                        <div class="response">"What specific developments are you waiting for? And what's the opportunity cost of waiting?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">58</div>
+                        <div class="objection-title">"We're in the middle of budget planning"</div>
+                        <div class="success-rate">51% Success Rate</div>
+                        <div class="psychology"> Process timing—aligning with internal cycles</div>
+                        <div class="response">"Perfect timing for budget planning. What revenue impact should we include in next year's projections?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">59</div>
+                        <div class="objection-title">"We need to get through this quarter first"</div>
+                        <div class="success-rate">39% Success Rate</div>
+                        <div class="psychology"> Short-term focus—current quarter pressure</div>
+                        <div class="response">"I understand quarter-end pressure. What if this helped you not just hit this quarter, but exceed it?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">60</div>
+                        <div class="objection-title">"We're waiting for the new fiscal year"</div>
+                        <div class="success-rate">35% Success Rate</div>
+                        <div class="psychology"> Fresh start effect—new fiscal year as clean slate</div>
+                        <div class="response">"New fiscal year is great for new initiatives. How many months away is that, and what's the revenue opportunity during that time?"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <h2 class="category-title">Trust & Credibility</h2>
+                <div class="objections-grid">
+                    <div class="objection-card">
+                        <div class="objection-number">61</div>
+                        <div class="objection-title">"We've never heard of your company"</div>
+                        <div class="success-rate">43% Success Rate</div>
+                        <div class="psychology"> Familiarity bias—preferring known entities over unknown ones</div>
+                        <div class="response">"That's fair. The best solutions often come from companies focused on innovation rather than marketing. Let me show you what we've built..."</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">62</div>
+                        <div class="objection-title">"You're too small for our needs"</div>
+                        <div class="success-rate">38% Success Rate</div>
+                        <div class="psychology"> Size bias—associating bigger with better or safer</div>
+                        <div class="response">"Size is interesting. What specific capability do you think requires a larger company? Let me show you what focused expertise delivers..."</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">63</div>
+                        <div class="objection-title">"We need references from similar companies"</div>
+                        <div class="success-rate">67% Success Rate</div>
+                        <div class="psychology"> Social proof seeking—wanting validation from peers</div>
+                        <div class="response">"Absolutely. Here are three companies in your space with similar challenges. What specific results would you like to see?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">64</div>
+                        <div class="objection-title">"How long have you been in business?"</div>
+                        <div class="success-rate">52% Success Rate</div>
+                        <div class="psychology"> Stability assessment—evaluating longevity as trust factor</div>
+                        <div class="response">"We've been helping companies transform their sales performance for [X] years. What specific experience would give you confidence in our approach?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">65</div>
+                        <div class="objection-title">"We need to see case studies first"</div>
+                        <div class="success-rate">59% Success Rate</div>
+                        <div class="psychology"> Evidence requirement—seeking proof before commitment</div>
+                        <div class="response">"Smart approach. What specific outcomes would you need to see in a case study to feel confident this would work for you?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">66</div>
+                        <div class="objection-title">"We're not sure you can deliver what you promise"</div>
+                        <div class="success-rate">41% Success Rate</div>
+                        <div class="psychology"> Skepticism—doubt about capability claims</div>
+                        <div class="response">"I understand your skepticism. What specific promises concern you most, and how can we demonstrate our ability to deliver?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">67</div>
+                        <div class="objection-title">"We need more information about your team"</div>
+                        <div class="success-rate">46% Success Rate</div>
+                        <div class="psychology"> Team validation—assessing human capital behind solution</div>
+                        <div class="response">"Absolutely. Our team is our greatest asset. What specific expertise or experience would be most relevant to your situation?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">68</div>
+                        <div class="objection-title">"We need to understand your methodology better"</div>
+                        <div class="success-rate">53% Success Rate</div>
+                        <div class="psychology"> Process clarity—wanting to understand how results are achieved</div>
+                        <div class="response">"That's crucial for success. What aspect of our methodology would be most important for you to understand in detail?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">69</div>
+                        <div class="objection-title">"We're not convinced this will work for our industry"</div>
+                        <div class="success-rate">37% Success Rate</div>
+                        <div class="psychology"> Industry specificity—doubting applicability to unique context</div>
+                        <div class="response">"Every industry has unique challenges. What specifically makes you think this might not work in your industry?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">70</div>
+                        <div class="objection-title">"We need to see your track record"</div>
+                        <div class="success-rate">48% Success Rate</div>
+                        <div class="psychology"> Performance validation—seeking historical evidence of success</div>
+                        <div class="response">"Our track record speaks for itself. What specific metrics or outcomes would give you confidence in our approach?"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <h2 class="category-title">Competition & Alternatives</h2>
+                <div class="objections-grid">
+                    <div class="objection-card">
+                        <div class="objection-number">71</div>
+                        <div class="objection-title">"We're already working with another provider"</div>
+                        <div class="success-rate">39% Success Rate</div>
+                        <div class="psychology"> Loyalty bias—preferring current relationships</div>
+                        <div class="response">"That's great you have a partner. How satisfied are you with their results, and what would need to improve to consider a change?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">72</div>
+                        <div class="objection-title">"We're happy with our current solution"</div>
+                        <div class="success-rate">34% Success Rate</div>
+                        <div class="psychology"> Satisfaction bias—overestimating current solution value</div>
+                        <div class="response">"That's excellent to hear. What specifically makes you happy, and what would make it even better?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">73</div>
+                        <div class="objection-title">"We're considering other options"</div>
+                        <div class="success-rate">42% Success Rate</div>
+                        <div class="psychology"> Option exploration—keeping alternatives open</div>
+                        <div class="response">"Smart to evaluate multiple options. What specific criteria are you using to compare the different approaches?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">74</div>
+                        <div class="objection-title">"Your competitor offers more features"</div>
+                        <div class="success-rate">36% Success Rate</div>
+                        <div class="psychology"> Feature comparison—focusing on quantity over quality</div>
+                        <div class="response">"Features are interesting. What specific outcomes are you trying to achieve, and which features actually drive those results?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">75</div>
+                        <div class="objection-title">"We're building this in-house"</div>
+                        <div class="success-rate">31% Success Rate</div>
+                        <div class="psychology"> DIY preference—valuing internal control</div>
+                        <div class="response">"That's a significant commitment. What's your timeline, and what's the opportunity cost during development?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">76</div>
+                        <div class="objection-title">"We've tried something similar before and it didn't work"</div>
+                        <div class="success-rate">44% Success Rate</div>
+                        <div class="psychology"> Past experience bias—previous failures influencing current decisions</div>
+                        <div class="response">"That's valuable context. What specifically didn't work before, and how is our approach fundamentally different?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">77</div>
+                        <div class="objection-title">"Your competitor has a better reputation"</div>
+                        <div class="success-rate">33% Success Rate</div>
+                        <div class="psychology"> Brand perception—associating reputation with quality</div>
+                        <div class="response">"Reputation is interesting. What specifically have you heard, and what would you need to see to feel confident in our approach?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">78</div>
+                        <div class="objection-title">"We're committed to another vendor already"</div>
+                        <div class="success-rate">29% Success Rate</div>
+                        <div class="psychology"> Commitment consistency—honoring previous decisions</div>
+                        <div class="response">"I respect that commitment. What would need to happen for you to reconsider that decision?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">79</div>
+                        <div class="objection-title">"We can get this cheaper elsewhere"</div>
+                        <div class="success-rate">38% Success Rate</div>
+                        <div class="psychology"> Price sensitivity—focusing on cost over value</div>
+                        <div class="response">"Price is one factor. What's the total cost of choosing based on price alone versus getting the results you need?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">80</div>
+                        <div class="objection-title">"We're waiting for competitor's new release"</div>
+                        <div class="success-rate">27% Success Rate</div>
+                        <div class="psychology"> Anticipation bias—valuing future options over current ones</div>
+                        <div class="response">"That's interesting. What specific capabilities are you waiting for, and what's the cost of waiting?"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <h2 class="category-title">Implementation & Process</h2>
+                <div class="objections-grid">
+                    <div class="objection-card">
+                        <div class="objection-number">81</div>
+                        <div class="objection-title">"This seems too complicated to implement"</div>
+                        <div class="success-rate">46% Success Rate</div>
+                        <div class="psychology"> Complexity aversion—fear of difficult processes</div>
+                        <div class="response">"Implementation is actually simpler than it appears. What specifically seems complicated, and how can I simplify that for you?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">82</div>
+                        <div class="objection-title">"We don't have the resources for implementation"</div>
+                        <div class="success-rate">41% Success Rate</div>
+                        <div class="psychology"> Resource scarcity—perceived lack of capacity</div>
+                        <div class="response">"That's exactly why this matters. What if this actually freed up resources rather than consuming them?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">83</div>
+                        <div class="objection-title">"This will take too long to implement"</div>
+                        <div class="success-rate">37% Success Rate</div>
+                        <div class="psychology"> Time discounting—valuing immediate results over future benefits</div>
+                        <div class="response">"Timeline matters. What if I showed you how to get 80% of the value in 20% of the time?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">84</div>
+                        <div class="objection-title">"Our team won't adopt this easily"</div>
+                        <div class="success-rate">43% Success Rate</div>
+                        <div class="psychology"> Change resistance—fear of disrupting established routines</div>
+                        <div class="response">"Adoption is crucial. What specifically concerns you about team adoption, and how can we address those concerns?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">85</div>
+                        <div class="objection-title">"We need to integrate with existing systems"</div>
+                        <div class="success-rate">52% Success Rate</div>
+                        <div class="psychology"> System compatibility—ensuring technical fit</div>
+                        <div class="response">"Integration is essential. What systems are you currently using, and what level of integration do you need?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">86</div>
+                        <div class="objection-title">"This will disrupt our current operations"</div>
+                        <div class="success-rate">34% Success Rate</div>
+                        <div class="psychology"> Stability seeking—avoiding operational turbulence</div>
+                        <div class="response">"Minimizing disruption is critical. What if we could implement this in phases that actually improve operations as we go?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">87</div>
+                        <div class="objection-title">"We need a detailed implementation plan"</div>
+                        <div class="success-rate">58% Success Rate</div>
+                        <div class="psychology"> Planning requirement—need for structure and clarity</div>
+                        <div class="response">"Absolutely. What specific elements would you need to see in an implementation plan to feel confident?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">88</div>
+                        <div class="objection-title">"This requires too much training"</div>
+                        <div class="success-rate">39% Success Rate</div>
+                        <div class="psychology"> Learning curve aversion—fear of time investment in education</div>
+                        <div class="response">"Training is an investment, not a cost. What if we could reduce training time by 70% while improving results?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">89</div>
+                        <div class="objection-title">"We're not ready for this level of change"</div>
+                        <div class="success-rate">32% Success Rate</div>
+                        <div class="psychology"> Change readiness—assessment of organizational capacity</div>
+                        <div class="response">"Readiness is relative. What if we could start with small wins that build confidence for larger changes?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">90</div>
+                        <div class="objection-title">"We need to customize this for our needs"</div>
+                        <div class="success-rate">47% Success Rate</div>
+                        <div class="psychology"> Uniqueness bias—believing situation requires special solution</div>
+                        <div class="response">"Customization is important. What specific aspects would need to be customized for your unique situation?"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <h2 class="category-title">Risk & Uncertainty</h2>
+                <div class="objections-grid">
+                    <div class="objection-card">
+                        <div class="objection-number">91</div>
+                        <div class="objection-title">"This is too risky for our organization"</div>
+                        <div class="success-rate">35% Success Rate</div>
+                        <div class="psychology"> Risk aversion—preferring certainty over potential gain</div>
+                        <div class="response">"Risk assessment is smart. What specific risks concern you most, and how can we mitigate those together?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">92</div>
+                        <div class="objection-title">"We're not sure this will work for us"</div>
+                        <div class="success-rate">41% Success Rate</div>
+                        <div class="psychology"> Outcome uncertainty—doubt about future results</div>
+                        <div class="response">"Uncertainty is natural. What would you need to see to feel confident this would work in your specific environment?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">93</div>
+                        <div class="objection-title">"What if this doesn't deliver the results?"</div>
+                        <div class="success-rate">48% Success Rate</div>
+                        <div class="psychology"> Loss prevention—focusing on potential negative outcomes</div>
+                        <div class="response">"That's the right question to ask. What guarantees or milestones would you need to feel protected?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">94</div>
+                        <div class="objection-title">"This feels too experimental"</div>
+                        <div class="success-rate">33% Success Rate</div>
+                        <div class="psychology"> Novelty aversion—preferring proven approaches</div>
+                        <div class="response">"This is actually based on proven science, not experimentation. What evidence would you need to see to feel confident?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">95</div>
+                        <div class="objection-title">"We can't afford to make a mistake"</div>
+                        <div class="success-rate">39% Success Rate</div>
+                        <div class="psychology"> Perfectionism—fear of wrong decisions</div>
+                        <div class="response">"No one can afford mistakes in today's environment. What if we could de-risk this through a phased approach?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">96</div>
+                        <div class="objection-title">"This is unproven in our industry"</div>
+                        <div class="success-rate">36% Success Rate</div>
+                        <div class="psychology"> Industry specificity—doubting transferability of solutions</div>
+                        <div class="response">"Every industry is unique. What makes your industry different, and how can we adapt to those specific needs?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">97</div>
+                        <div class="objection-title">"We need more time to evaluate the risk"</div>
+                        <div class="success-rate">44% Success Rate</div>
+                        <div class="psychology"> Analysis paralysis—overthinking to avoid decision</div>
+                        <div class="response">"Risk evaluation is crucial. What specific risks are you most concerned about, and how can we address those directly?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">98</div>
+                        <div class="objection-title">"What happens if this fails?"</div>
+                        <div class="success-rate">42% Success Rate</div>
+                        <div class="psychology"> Failure focus—anticipating negative outcomes</div>
+                        <div class="response">"Failure planning is smart. What's the bigger risk—trying something new or maintaining the status quo?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">99</div>
+                        <div class="objection-title">"We're not comfortable being early adopters"</div>
+                        <div class="success-rate">31% Success Rate</div>
+                        <div class="psychology"> Follower mentality—preferring proven approaches</div>
+                        <div class="response">"That's understandable. What if I showed you how others have successfully implemented this before you commit?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">100</div>
+                        <div class="objection-title">"This feels like a big commitment"</div>
+                        <div class="success-rate">38% Success Rate</div>
+                        <div class="psychology"> Commitment aversion—fear of being locked in</div>
+                        <div class="response">"Commitment should be earned. What if we could start with a smaller pilot to prove value before full commitment?"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <h2 class="category-title">Value & ROI</h2>
+                <div class="objections-grid">
+                    <div class="objection-card">
+                        <div class="objection-number">101</div>
+                        <div class="objection-title">"We don't see the value yet"</div>
+                        <div class="success-rate">45% Success Rate</div>
+                        <div class="psychology"> Value perception gap—not understanding benefits</div>
+                        <div class="response">"Value needs to be clear. What specific outcomes would create the most value for your organization?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">102</div>
+                        <div class="objection-title">"The ROI isn't clear enough"</div>
+                        <div class="success-rate">52% Success Rate</div>
+                        <div class="psychology"> ROI clarity—needing clear financial justification</div>
+                        <div class="response">"ROI should be crystal clear. What metrics matter most to you, and how can we demonstrate the return?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">103</div>
+                        <div class="objection-title">"We're not convinced this is worth the investment"</div>
+                        <div class="success-rate">37% Success Rate</div>
+                        <div class="psychology"> Cost-benefit analysis—weighing investment against returns</div>
+                        <div class="response">"Investment decisions require careful analysis. What would make this investment clearly worthwhile for you?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">104</div>
+                        <div class="objection-title">"This costs more than we expected"</div>
+                        <div class="success-rate">41% Success Rate</div>
+                        <div class="psychology"> Price surprise—cost exceeding expectations</div>
+                        <div class="response">"Cost expectations are important. What were you expecting, and what value would justify the difference?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">105</div>
+                        <div class="objection-title">"We need to see the business case"</div>
+                        <div class="success-rate">58% Success Rate</div>
+                        <div class="psychology"> Business justification—needing formal ROI analysis</div>
+                        <div class="response">"A strong business case is essential. What specific elements would you need to see to build your case?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">106</div>
+                        <div class="objection-title">"The payback period seems too long"</div>
+                        <div class="success-rate">34% Success Rate</div>
+                        <div class="psychology"> Time value of money—preferring quick returns</div>
+                        <div class="response">"Payback period matters. What if I showed you how to accelerate ROI and get returns faster?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">107</div>
+                        <div class="objection-title">"We're not sure this will solve our problem"</div>
+                        <div class="success-rate">43% Success Rate</div>
+                        <div class="psychology"> Solution efficacy—doubting problem-solving capability</div>
+                        <div class="response">"Solving your problem is our primary goal. What specific aspects of your problem are most concerned about?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">108</div>
+                        <div class="objection-title">"This seems like a luxury, not a necessity"</div>
+                        <div class="success-rate">32% Success Rate</div>
+                        <div class="psychology"> Necessity assessment—evaluating essential vs. optional</div>
+                        <div class="response">"Necessity depends on perspective. What if I showed you how this actually addresses core business needs?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">109</div>
+                        <div class="objection-title">"We need more concrete metrics"</div>
+                        <div class="success-rate">49% Success Rate</div>
+                        <div class="psychology"> Measurement requirement—needing quantifiable outcomes</div>
+                        <div class="response">"Metrics are crucial for success. What specific KPIs would you need to track to measure value?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">110</div>
+                        <div class="objection-title">"The value proposition isn't compelling enough"</div>
+                        <div class="success-rate">39% Success Rate</div>
+                        <div class="psychology"> Value proposition clarity—needing clear benefit statement</div>
+                        <div class="response">"Value should be compelling. What specific benefits would make this proposition irresistible to you?"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <h2 class="category-title">Content & Information</h2>
+                <div class="objections-grid">
+                    <div class="objection-card">
+                        <div class="objection-number">111</div>
+                        <div class="objection-title">"We need more information"</div>
+                        <div class="success-rate">56% Success Rate</div>
+                        <div class="psychology"> Information gap—feeling of incomplete knowledge</div>
+                        <div class="response">"Information is crucial for good decisions. What specific information would be most helpful right now?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">112</div>
+                        <div class="objection-title">"Send us more details first"</div>
+                        <div class="success-rate">51% Success Rate</div>
+                        <div class="psychology"> Information gathering—postponing decision until more data</div>
+                        <div class="response">"Details are important. What specific information would be most valuable for your evaluation?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">113</div>
+                        <div class="objection-title">"We need to see a demo first"</div>
+                        <div class="success-rate">63% Success Rate</div>
+                        <div class="psychology"> Experiential learning—needing to see before believing</div>
+                        <div class="response">"Seeing is believing. What specific aspects would you most like to see in a demonstration?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">114</div>
+                        <div class="objection-title">"We need to discuss this internally first"</div>
+                        <div class="success-rate">47% Success Rate</div>
+                        <div class="psychology"> Internal consensus—needing team alignment</div>
+                        <div class="response">"Internal discussion is smart. What specific questions or concerns do you anticipate from your team?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">115</div>
+                        <div class="objection-title">"We need to understand the technical details"</div>
+                        <div class="success-rate">44% Success Rate</div>
+                        <div class="psychology"> Technical validation—needing to understand mechanics</div>
+                        <div class="response">"Technical understanding is important. What specific technical aspects would you like to explore in detail?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">116</div>
+                        <div class="objection-title">"We need to compare this to other options"</div>
+                        <div class="success-rate">42% Success Rate</div>
+                        <div class="psychology"> Comparative analysis—need to evaluate alternatives</div>
+                        <div class="response">"Comparison is smart. What specific criteria are you using to evaluate different options?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">117</div>
+                        <div class="objection-title">"We need to see customer testimonials"</div>
+                        <div class="success-rate">59% Success Rate</div>
+                        <div class="psychology"> Social validation—seeking proof from others' experiences</div>
+                        <div class="response">"Testimonials provide valuable insights. What specific customer experiences would be most relevant to you?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">118</div>
+                        <div class="objection-title">"We need to understand your methodology better"</div>
+                        <div class="success-rate">53% Success Rate</div>
+                        <div class="psychology"> Process understanding—needing to know how it works</div>
+                        <div class="response">"Methodology transparency is important. What specific aspects of our approach would you like to understand better?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">119</div>
+                        <div class="objection-title">"We need to see the pricing structure"</div>
+                        <div class="success-rate">48% Success Rate</div>
+                        <div class="psychology"> Pricing clarity—needing to understand cost structure</div>
+                        <div class="response">"Pricing transparency is essential. What specific pricing information would be most helpful for your evaluation?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">120</div>
+                        <div class="objection-title">"We need to understand the onboarding process"</div>
+                        <div class="success-rate">46% Success Rate</div>
+                        <div class="psychology"> Implementation clarity—needing to understand beginning process</div>
+                        <div class="response">"Onboarding is critical for success. What specific aspects of the onboarding process would you like to understand?"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <h2 class="category-title">Relationship & Fit</h2>
+                <div class="objections-grid">
+                    <div class="objection-card">
+                        <div class="objection-number">121</div>
+                        <div class="objection-title">"We're not sure you're the right fit"</div>
+                        <div class="success-rate">39% Success Rate</div>
+                        <div class="psychology"> Fit assessment—evaluating compatibility</div>
+                        <div class="response">"Fit is crucial for success. What specific aspects are you evaluating to determine if we're the right partner?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">122</div>
+                        <div class="objection-title">"We need to get to know your company better"</div>
+                        <div class="success-rate">52% Success Rate</div>
+                        <div class="psychology"> Relationship building—need for connection and trust</div>
+                        <div class="response">"Building a relationship is important. What would you like to know about our company and approach?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">123</div>
+                        <div class="objection-title">"We're not sure we can work together"</div>
+                        <div class="success-rate">36% Success Rate</div>
+                        <div class="psychology"> Working relationship—doubting collaborative ability</div>
+                        <div class="response">"Working together effectively is essential. What concerns do you have about our potential collaboration?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">124</div>
+                        <div class="objection-title">"We need to meet your team first"</div>
+                        <div class="success-rate">58% Success Rate</div>
+                        <div class="psychology"> Team validation—needing to assess people</div>
+                        <div class="response">"Meeting the team is a great idea. Who specifically would you like to meet, and what would you like to learn?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">125</div>
+                        <div class="objection-title">"We're not sure this aligns with our culture"</div>
+                        <div class="success-rate">34% Success Rate</div>
+                        <div class="psychology"> Cultural fit—evaluating alignment with values</div>
+                        <div class="response">"Cultural alignment is important. What specific aspects of your culture should we understand and align with?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">126</div>
+                        <div class="objection-title">"We need to understand your support model"</div>
+                        <div class="success-rate">47% Success Rate</div>
+                        <div class="psychology"> Support assurance—needing confidence in ongoing help</div>
+                        <div class="response">"Support is crucial for long-term success. What specific support capabilities would give you confidence?"</div>
+                    </div>
+
+                    <div class="objection-card">
+                        <div class="objection-number">127</div>
+                        <div class="objection-title">"We're not sure this is the right time to work together"</div>
+                        <div class="success-rate">41% Success Rate</div>
+                        <div class="psychology">Timing assessment—evaluating readiness for partnership</div>
+                        <div class="response">"Timing is important for successful partnerships. What would make this the right time to move forward?"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="methodology">
+                <h2>Methodology</h2>
+                <p>This isn't a collection of clever responses—it's a systematic framework developed through analyzing 56,488 recorded sales conversations. Each objection is mapped to its underlying psychological driver, with responses designed to bypass conscious resistance and trigger automatic acceptance mechanisms.</p>
+            </div>
+
+            <!-- Ending Page Content Integration -->
+            <div class="ending-section">
+                <h1 class="ending-title">Are You Ready For This Level of Performance?</h1>
+                <div class="ending-subtitle">I'm not your ordinary sales manager. I'm your growth partner—A specialist in transforming underperforming sales operations into revenue-generating powerhouses through psychological mastery and strategic leadership.</div>
+
+                <div class="key-insight">
+                    <p>I'm looking for a revenue problem to solve. Give me your broken sales floor, your impossible market, your ambitious growth target. I'll give you a machine that prints money.</p>
+                </div>
+                
+                <div class="value-proposition">
+                    <p>Seeking to bring this unique trifecta of skills to forward-thinking organizations on the global stage. Particularly valuable for companies looking to build or scale high-performance outbound sales operations.</p>
+                </div>
+
+                <h2 style="color: #fff; margin-bottom: 30px;">If your goal is to transform your sales floor from a cost center into your most powerful profit engine, then I am your candidate.</h2>
+                
+                <div class="profile-flash-card">
+                    <img src="https://images.unsplash.com/photo-1756856893832-e6d28ba0a2b0?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Profile Photo" class="profile-photo">
+                    <h1 class="profile-name">Hamza Butt</h1>
+                    
+                    <a href="https://www.linkedin.com/in/hamza-butt-699629274" class="cta-button" target="_blank">
+                        <svg class="linkedin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37,4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24,1.771 24h20.451C23.2 24 24 23.227,24 22.271V1.729C24 .774 23.2 0,22.222 0h.003z"/>
+                        </svg>
+                        <span class="separator">|</span>
+                        LET'S BUILD SOMETHING LEGENDARY
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 90-Day Plan Content Page -->
+        <!-- 90-Day Plan Cover -->
+        <div id="plan-cover" class="cover-container" style="display: none;">
+            <div class="cover-content">
+                <h1 class="cover-title">THE REVENUE TRANSFORMATION BLUEPRINT</h1>
+                <p class="cover-subtitle">90-Day Sales Management Mastery</p>
+                <p class="cover-description">
+                    A systematic management plan for building high-performance sales teams through behavioral science, 
+                    advanced objection handling, and predictive pipeline engineering.
+                </p>
+                <a href="#" class="view-button" onclick="showContent('plan-content'); return false;">View</a>
+            </div>
+            
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-number">42%</span>
+                    <span class="stat-label">Target Close Rate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">127%</span>
+                    <span class="stat-label">Team Quota Goal</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">28%</span>
+                    <span class="stat-label">Cycle Reduction</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">$2M+</span>
+                    <span class="stat-label">Pipeline Impact</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a class="nav-button active" onclick="showCover('psychology-cover', this)">B2B Psychology</a>
+            <a class="nav-button" onclick="showCover('objection-cover', this)">127 Objections</a>
+            <a class="nav-button" onclick="showCover('plan-cover', this)">90-Day Plan</a>
+        </div>
+    </div>
+
+    <!-- B2B Psychology Content Page -->
+    <div id="plan-content" class="content-page">
+        <button class="close-button" onclick="backToLanding()">← Back</button>
+        
+        <div class="content-container">
+            <div class="content-header">
+                <h1>THE REVENUE TRANSFORMATION BLUEPRINT</h1>
+                <div class="content-subtitle">90-Day Sales Management Mastery</div>
+            </div>
+
+            <div class="overview-section">
+                <h2 style="color: #fff; text-align: center; margin-bottom: 10px;">Strategic Overview</h2>
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <span class="overview-number">42%</span>
+                        <span class="overview-label">Target Close Rate</span>
+                    </div>
+                    <div class="overview-card">
+                        <span class="overview-number">127%</span>
+                        <span class="overview-label">Team Quota Goal</span>
+                    </div>
+                    <div class="overview-card">
+                        <span class="overview-number">28%</span>
+                        <span class="overview-label">Cycle Reduction</span>
+                    </div>
+                    <div class="overview-card">
+                        <span class="overview-number">$2M+</span>
+                        <span class="overview-label">Pipeline Impact</span>
+                    </div>
+                    <div class="overview-card">
+                        <span class="overview-number">92%</span>
+                        <span class="overview-label">Retention Target</span>
+                    </div>
+                    <div class="overview-card">
+                        <span class="overview-number">15</span>
+                        <span class="overview-label">Days to Productivity</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-section">
+                <div class="phase-header">
+                    <div class="phase-number">30</div>
+                    <div class="phase-title">Foundation & Team Intelligence</div>
+                </div>
+                <div class="objectives-grid">
+                    <div class="objective-card">
+                        <div class="objective-title">Individual Performance DNA Mapping</div>
+                        <div class="target-metric">Target: Complete team assessment</div>
+                        <ul class="action-list">
+                            <li>Conduct 2-hour deep-dive 1-on-1s with all team members</li>
+                            <li>Map individual motivation drivers and resistance patterns</li>
+                            <li>Assess cognitive bias tendencies using standardized framework</li>
+                            <li>Identify communication style preferences (visual, auditory, kinesthetic)</li>
+                            <li>Document success triggers and limiting beliefs per individual</li>
+                            <li>Create personalized development profiles for each team member</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="objective-card">
+                        <div class="objective-title">Performance Diagnostic & Baseline</div>
+                        <div class="target-metric">Target: Identify 5+ critical bottlenecks</div>
+                        <ul class="action-list">
+                            <li>Analyze 6 months of performance data across 24 key metrics</li>
+                            <li>Shadow top performer and bottom performer for full cycles</li>
+                            <li>Record and analyze 20+ discovery calls for pattern identification</li>
+                            <li>Map current sales process with human influence points</li>
+                            <li>Audit CRM data quality across 30 critical fields</li>
+                            <li>Benchmark against industry performance standards</li>
+                        </ul>
+                    </div>
+
+                    <div class="objective-card">
+                        <div class="objective-title">Rapid Implementation Wins</div>
+                        <div class="target-metric">Target: 18% conversion uplift in 30 days</div>
+                        <ul class="action-list">
+                            <li>Deploy 30-point core objection handling framework</li>
+                            <li>Implement influence-based discovery structure</li>
+                            <li>Create neurolinguistic response templates for common scenarios</li>
+                            <li>Establish daily performance coaching rhythm</li>
+                            <li>Launch peer-to-peer expertise sharing sessions</li>
+                            <li>Install real-time conversation analysis tools</li>
+                        </ul>
+                    </div>
+
+                    <div class="objective-card">
+                        <div class="objective-title">System & Process Architecture</div>
+                        <div class="target-metric">Target: 30% administrative efficiency gain</div>
+                        <ul class="action-list">
+                            <li>Optimize CRM workflows for psychological decision tracking</li>
+                            <li>Implement automated behavioral pattern recognition</li>
+                            <li>Create real-time coaching alert systems</li>
+                            <li>Deploy advanced lead scoring with personality insights</li>
+                            <li>Build predictive analytics dashboard for conversion probability</li>
+                            <li>Establish automated post-call performance analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-section">
+                <div class="phase-header">
+                    <div class="phase-number">60</div>
+                    <div class="phase-title">Advanced Mastery Implementation</div>
+                </div>
+                <div class="objectives-grid">
+                    <div class="objective-card">
+                        <div class="objective-title">Master-Level Objection Engineering</div>
+                        <div class="target-metric">Target: Deploy full 127-point matrix</div>
+                        <ul class="action-list">
+                            <li>Train team on complete behavioral objection framework</li>
+                            <li>Implement neurolinguistic programming techniques</li>
+                            <li>Deploy mirror neuron synchronization protocols</li>
+                            <li>Master cognitive bias exploitation in real conversations</li>
+                            <li>Advanced emotional state management training</li>
+                            <li>High-pressure scenario testing with role-plays</li>
+                        </ul>
+                    </div>
+
+                    <div class="objective-card">
+                        <div class="objective-title">Performance Acceleration Systems</div>
+                        <div class="target-metric">Target: 110% team quota achievement</div>
+                        <ul class="action-list">
+                            <li>Launch weekly strategic deal analysis sessions</li>
+                            <li>Implement territory optimization based on buyer personas</li>
+                            <li>Deploy personality-matched prospect assignment system</li>
+                            <li>Create competitive intelligence buyer profiles</li>
+                            <li>Advanced negotiation mastery class series</li>
+                            <li>Install real-time conversion probability tracking</li>
+                        </ul>
+                    </div>
+
+                    <div class="objective-card">
+                        <div class="objective-title">Behavioral Economics Training</div>
+                        <div class="target-metric">Target: 35% skill improvement across team</div>
+                        <ul class="action-list">
+                            <li>8-week intensive course on decision science</li>
+                            <li>Kahneman System 1/System 2 decision targeting workshop</li>
+                            <li>Thaler nudge theory practical application training</li>
+                            <li>Cialdini influence principles mastery certification</li>
+                            <li>Advanced buyer persona development</li>
+                            <li>Emotional intelligence and state management certification</li>
+                        </ul>
+                    </div>
+
+                    <div class="objective-card">
+                        <div class="objective-title">Predictive Pipeline Engineering</div>
+                        <div class="target-metric">Target: 25% cycle time reduction</div>
+                        <ul class="action-list">
+                            <li>Deploy AI-powered pattern recognition systems</li>
+                            <li>Implement predictive objection forecasting system</li>
+                            <li>Create automated mental trigger identification</li>
+                            <li>Advanced pipeline velocity optimization through human insights</li>
+                            <li>Behavioral-based win/loss analysis automation</li>
+                            <li>Multi-touch psychological attribution modeling</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-section">
+                <div class="phase-header">
+                    <div class="phase-number">90</div>
+                    <div class="phase-title">Revenue Machine Completion</div>
+                </div>
+                <div class="objectives-grid">
+                    <div class="objective-card">
+                        <div class="objective-title">Culture & Mindset Transformation</div>
+                        <div class="target-metric">Target: 95% team engagement score</div>
+                        <ul class="action-list">
+                            <li>Establish high-performance team culture</li>
+                            <li>Deploy peer mentoring programs based on expertise sharing</li>
+                            <li>Create achievement-based recognition system</li>
+                            <li>Advanced career development through influence mastery</li>
+                            <li>Cross-functional collaboration using persuasion principles</li>
+                            <li>Resilience and stress management training</li>
+                        </ul>
+                    </div>
+
+                    <div class="objective-card">
+                        <div class="objective-title">Intelligent Coaching Automation</div>
+                        <div class="target-metric">Target: Fully autonomous optimization</div>
+                        <ul class="action-list">
+                            <li>AI-powered real-time conversation coaching system</li>
+                            <li>Predictive performance intervention alerts</li>
+                            <li>Automated excellence pattern optimization</li>
+                            <li>Dynamic territory assignment based on strengths matching</li>
+                            <li>Intelligent quota forecasting using performance models</li>
+                            <li>Self-optimizing success trigger deployment</li>
+                        </ul>
+                    </div>
+
+                    <div class="objective-card">
+                        <div class="objective-title">Advanced Revenue Optimization</div>
+                        <div class="target-metric">Target: 130% quota achievement</div>
+                        <ul class="action-list">
+                            <li>Master-level persuasion and negotiation techniques</li>
+                            <li>Advanced competitive displacement strategies</li>
+                            <li>Human-centered pricing and packaging optimization</li>
+                            <li>Enterprise-level influence and persuasion mastery</li>
+                            <li>Complex deal architecture design</li>
+                            <li>Executive-level rapport and engagement protocols</li>
+                        </ul>
+                    </div>
+
+                    <div class="objective-card">
+                        <div class="objective-title">Scalability Framework</div>
+                        <div class="target-metric">Target: Ready for 3x team expansion</div>
+                        <ul class="action-list">
+                            <li>Behavioral hiring and assessment protocols</li>
+                            <li>Advanced manager development using cognitive science</li>
+                            <li>Complete process documentation with mental annotations</li>
+                            <li>Automated onboarding with personality adaptation</li>
+                            <li>Advanced KPI tracking including human performance metrics</li>
+                            <li>Expansion strategy framework for rapid scaling</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="advanced-section">
+                <h2 style="color: #fff; margin-bottom: 30px;">Advanced Management Techniques</h2>
+                
+                <div class="advanced-technique">
+                    <h4>Pygmalion Performance Protocol</h4>
+                    <p>Based on expectation-outcome research: Set specific, challenging targets while providing mental frameworks to achieve them. Create self-fulfilling prophecies through strategic expectation management and confidence building.</p>
+                </div>
+                
+                <div class="advanced-technique">
+                    <h4>Behavioral Momentum Engineering</h4>
+                    <p>Design micro-victories that build unstoppable momentum toward larger achievements. Use victory anchoring and success pattern reinforcement to create continuous performance cycles.</p>
+                </div>
+                
+                <div class="advanced-technique">
+                    <h4>Competitive Intelligence Psychology</h4>
+                    <p>Map competitor sales approaches to identify market vulnerabilities. Discover their influence gaps and position team's human connection advantages strategically.</p>
+                </div>
+                
+                <div class="advanced-technique">
+                    <h4>Territory Psychology Optimization</h4>
+                    <p>Match salespeople to territories based on natural compatibility with regional buyer characteristics. Maximize authentic relationship-building for effortless influence alignment.</p>
+                </div>
+            </div>
+
+            <div class="kpi-dashboard">
+                <h2 class="kpi-title">Success Metrics Dashboard</h2>
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <span class="kpi-number">130%</span>
+                        <span class="kpi-label">Team Quota Target</span>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-number">42%</span>
+                        <span class="kpi-label">Close Rate Goal</span>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-number">28%</span>
+                        <span class="kpi-label">Cycle Reduction</span>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-number">$2.5M</span>
+                        <span class="kpi-label">Hidden Pipeline Value</span>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-number">15</span>
+                        <span class="kpi-label">Days to Productivity</span>
+                    </div>
+                    <div class="kpi-card">
+                        <span class="kpi-number">95%</span>
+                        <span class="kpi-label">Team Retention Rate</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: #000; padding: 40px; text-align: center;">
+                <h2 style="color: #fff; margin-bottom: 20px;">The Outcome</h2>
+                <p style="color: #888; font-size: 1.1em; line-height: 1.8; max-width: 800px; margin: 0 auto;">
+                    By Day 90, you won't just have a sales team—you'll orchestrate a revenue-generating machine that operates with neurological precision, psychological insight, and predictable behavioral outcomes. Every conversation becomes a calculated influence opportunity.
+                </p>
+            </div>
+
+            <!-- Ending Page Content Integration -->
+            <div class="ending-section">
+                <h1 class="ending-title">Are You Ready For This Level of Performance?</h1>
+                <div class="ending-subtitle">I'm not your ordinary sales manager. I'm your growth partner—A specialist in transforming underperforming sales operations into revenue-generating powerhouses through psychological mastery and strategic leadership.</div>
+
+                <div class="key-insight">
+                    <p>I'm looking for a revenue problem to solve. Give me your broken sales floor, your impossible market, your ambitious growth target. I'll give you a machine that prints money.</p>
+                </div>
+                
+                <div class="value-proposition">
+                    <p>Seeking to bring this unique trifecta of skills to forward-thinking organizations on the global stage. Particularly valuable for companies looking to build or scale high-performance outbound sales operations.</p>
+                </div>
+
+                <h2 style="color: #fff; margin-bottom: 30px;">If your goal is to transform your sales floor from a cost center into your most powerful profit engine, then I am your candidate.</h2>
+                
+                <div class="profile-flash-card">
+                    <img src="https://images.unsplash.com/photo-1756856893832-e6d28ba0a2b0?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Profile Photo" class="profile-photo">
+                    <h1 class="profile-name">Hamza Butt</h1>
+                    
+                    <a href="https://www.linkedin.com/in/hamza-butt-699629274" class="cta-button" target="_blank">
+                        <svg class="linkedin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37,4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24,1.771 24h20.451C23.2 24 24 23.227,24 22.271V1.729C24 .774 23.2 0,22.222 0h.003z"/>
+                        </svg>
+                        <span class="separator">|</span>
+                        LET'S BUILD SOMETHING LEGENDARY
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize animations when page loads
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.querySelector('.linkedin-section').classList.add('visible');
+                document.querySelector('.cover-content').classList.add('visible');
+                document.querySelector('.stats-bar').classList.add('visible');
+            }, 100);
+            
+            // Animate cover content elements with staggered delays
+            setTimeout(() => {
+                document.querySelector('.cover-title').classList.add('visible');
+            }, 300);
+            
+            setTimeout(() => {
+                document.querySelector('.cover-subtitle').classList.add('visible');
+            }, 500);
+            
+            setTimeout(() => {
+                document.querySelector('.cover-description').classList.add('visible');
+            }, 700);
+            
+            setTimeout(() => {
+                document.querySelector('.view-button').classList.add('visible');
+            }, 900);
+            
+            // Animate stat items
+            setTimeout(() => {
+                const statItems = document.querySelectorAll('.stat-item');
+                statItems.forEach(item => {
+                    item.classList.add('visible');
+                });
+            }, 1100);
+        });
+
+        // Show content page
+        function showContent(contentId) {
+            const contentPage = document.getElementById(contentId);
+            const landingPage = document.getElementById('landing-page');
+            
+            // Hide landing page
+            landingPage.style.display = 'none';
+            
+            // Show content page
+            contentPage.style.display = 'block';
+            
+            // Trigger animations
+            setTimeout(() => {
+                contentPage.classList.add('visible');
+                
+                // Animate content elements with staggered delays
+                setTimeout(() => {
+                    document.querySelector('.close-button').classList.add('visible');
+                }, 100);
+                
+                setTimeout(() => {
+                    document.querySelector('.content-container').classList.add('visible');
+                }, 200);
+                
+                setTimeout(() => {
+                    const header = document.querySelector('.content-header h1');
+                    if (header) header.classList.add('visible');
+                }, 500);
+                
+                setTimeout(() => {
+                    const subtitle = document.querySelector('.content-subtitle');
+                    if (subtitle) subtitle.classList.add('visible');
+                }, 600);
+                
+                setTimeout(() => {
+                    const sections = document.querySelectorAll('.content-section');
+                    sections.forEach(section => {
+                        section.classList.add('visible');
+                    });
+                }, 700);
+                
+                setTimeout(() => {
+                    const keyInsights = document.querySelectorAll('.key-insight');
+                    keyInsights.forEach(insight => {
+                        insight.classList.add('visible');
+                    });
+                }, 800);
+                
+                setTimeout(() => {
+                    const frameworkCards = document.querySelectorAll('.framework-card');
+                    frameworkCards.forEach(card => {
+                        card.classList.add('visible');
+                    });
+                }, 900);
+                
+                setTimeout(() => {
+                    const fullWidthCards = document.querySelectorAll('.full-width-card');
+                    fullWidthCards.forEach(card => {
+                        card.classList.add('visible');
+                    });
+                }, 1000);
+                
+                setTimeout(() => {
+                    const techniqueItems = document.querySelectorAll('.technique-list li');
+                    techniqueItems.forEach(item => {
+                        item.classList.add('visible');
+                    });
+                }, 1100);
+                
+                setTimeout(() => {
+                    const metricCards = document.querySelectorAll('.metric-card');
+                    metricCards.forEach(card => {
+                        card.classList.add('visible');
+                    });
+                }, 1200);
+            }, 50);
+        }
+
+        // Show specific cover
+        function showCover(coverId, buttonElement) {
+            // Hide all covers
+            const covers = document.querySelectorAll('.cover-container');
+            covers.forEach(cover => {
+                cover.style.display = 'none';
+            });
+            
+            // Show selected cover
+            document.getElementById(coverId).style.display = 'flex';
+            
+            // Update navigation buttons
+            const navButtons = document.querySelectorAll('.nav-button');
+            navButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            buttonElement.classList.add('active');
+            
+            // Reset animations
+            const coverContent = document.querySelector('#' + coverId + ' .cover-content');
+            const coverTitle = document.querySelector('#' + coverId + ' .cover-title');
+            const coverSubtitle = document.querySelector('#' + coverId + ' .cover-subtitle');
+            const coverDescription = document.querySelector('#' + coverId + ' .cover-description');
+            const viewButton = document.querySelector('#' + coverId + ' .view-button');
+            const statsBar = document.querySelector('#' + coverId + ' .stats-bar');
+            const statItems = document.querySelectorAll('#' + coverId + ' .stat-item');
+            
+            // Remove visible classes
+            coverContent.classList.remove('visible');
+            coverTitle.classList.remove('visible');
+            coverSubtitle.classList.remove('visible');
+            coverDescription.classList.remove('visible');
+            viewButton.classList.remove('visible');
+            statsBar.classList.remove('visible');
+            statItems.forEach(item => {
+                item.classList.remove('visible');
+            });
+            
+            // Re-add animations with delays
+            setTimeout(() => {
+                coverContent.classList.add('visible');
+            }, 100);
+            
+            setTimeout(() => {
+                coverTitle.classList.add('visible');
+            }, 300);
+            
+            setTimeout(() => {
+                coverSubtitle.classList.add('visible');
+            }, 500);
+            
+            setTimeout(() => {
+                coverDescription.classList.add('visible');
+            }, 700);
+            
+            setTimeout(() => {
+                viewButton.classList.add('visible');
+            }, 900);
+            
+            setTimeout(() => {
+                statsBar.classList.add('visible');
+            }, 1100);
+            
+            setTimeout(() => {
+                statItems.forEach(item => {
+                    item.classList.add('visible');
+                });
+            }, 1300);
+        }
+
+        // Back to landing page
+        function backToLanding() {
+            const contentPages = document.querySelectorAll('.content-page');
+            const landingPage = document.getElementById('landing-page');
+            const closeButtons = document.querySelectorAll('.close-button');
+            
+            // Add closing transition to back buttons
+            closeButtons.forEach(button => {
+                button.classList.add('closing');
+            });
+            
+            // Add closing transition to content pages
+            contentPages.forEach(page => {
+                page.classList.remove('visible');
+            });
+            
+            // Wait for back button and content page closing transitions, then show landing page with opening transition
+            setTimeout(() => {
+                // Hide all content pages
+                contentPages.forEach(page => {
+                    page.style.display = 'none';
+                });
+                
+                // Show landing page
+                landingPage.style.display = 'block';
+                landingPage.style.opacity = '0';
+                landingPage.style.transform = 'scale(1.05)';
+                
+                // Reset landing page animations
+                const linkedinSection = document.querySelector('.linkedin-section');
+                const coverContent = document.querySelector('.cover-content');
+                const coverTitle = document.querySelector('.cover-title');
+                const coverSubtitle = document.querySelector('.cover-subtitle');
+                const coverDescription = document.querySelector('.cover-description');
+                const viewButton = document.querySelector('.view-button');
+                const statsBar = document.querySelector('.stats-bar');
+                const statItems = document.querySelectorAll('.stat-item');
+                
+                // Remove visible classes
+                linkedinSection.classList.remove('visible');
+                coverContent.classList.remove('visible');
+                coverTitle.classList.remove('visible');
+                coverSubtitle.classList.remove('visible');
+                coverDescription.classList.remove('visible');
+                viewButton.classList.remove('visible');
+                statsBar.classList.remove('visible');
+                statItems.forEach(item => {
+                    item.classList.remove('visible');
+                });
+                
+                // Add landing page opening transition
+                setTimeout(() => {
+                    landingPage.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    landingPage.style.opacity = '1';
+                    landingPage.style.transform = 'scale(1)';
+                }, 50);
+                
+                // Re-add animations with delays for opening transition
+                setTimeout(() => {
+                    linkedinSection.classList.add('visible');
+                    coverContent.classList.add('visible');
+                    statsBar.classList.add('visible');
+                }, 300);
+                
+                setTimeout(() => {
+                    coverTitle.classList.add('visible');
+                }, 500);
+                
+                setTimeout(() => {
+                    coverSubtitle.classList.add('visible');
+                }, 700);
+                
+                setTimeout(() => {
+                    coverDescription.classList.add('visible');
+                }, 900);
+                
+                setTimeout(() => {
+                    viewButton.classList.add('visible');
+                }, 1100);
+                
+                setTimeout(() => {
+                    statItems.forEach(item => {
+                        item.classList.add('visible');
+                    });
+                }, 1300);
+                
+                // Reset back button closing state
+                setTimeout(() => {
+                    closeButtons.forEach(button => {
+                        button.classList.remove('closing');
+                    });
+                }, 800);
+            }, 400); // Wait for back button and content page closing transitions
+        }
+    </script>
+</body>
+</html>
